@@ -9,4 +9,5 @@ if (!supabaseUrl || !supabaseAnonKey) {
   );
 }
 
+/** @type {import('@supabase/supabase-js').SupabaseClient<import('./types/database.generated').Database>} */
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);

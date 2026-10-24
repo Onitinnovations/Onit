@@ -1,0 +1,105 @@
+{
+  "application_table_count": 79,
+  "auth_users": 0,
+  "buckets": [
+    {
+      "id": "contracts",
+      "public": false
+    },
+    {
+      "id": "customer-documents",
+      "public": false
+    },
+    {
+      "id": "employee-documents",
+      "public": false
+    },
+    {
+      "id": "field-evidence",
+      "public": false
+    },
+    {
+      "id": "identity-documents",
+      "public": false
+    },
+    {
+      "id": "invoices",
+      "public": false
+    },
+    {
+      "id": "marketing-assets",
+      "public": true
+    },
+    {
+      "id": "work-evidence",
+      "public": false
+    }
+  ],
+  "countries": [
+    {
+      "code": "NG",
+      "name": "Nigeria"
+    }
+  ],
+  "customer_accounts": 0,
+  "disabled_guards": 0,
+  "employee_records": 0,
+  "exposed_definers": 0,
+  "migrations": [
+    "20261024000100",
+    "20261024000200",
+    "20261024000300",
+    "20261024000400",
+    "20261024000500",
+    "20261024000600",
+    "20261024000700",
+    "20261024000800",
+    "20261024000900",
+    "20261024001000",
+    "20261024001100",
+    "20261024001200"
+  ],
+  "operational_zones": 0,
+  "policies": 48,
+  "postgres_version": "17.11",
+  "private_schema_usage": {
+    "anon": false,
+    "authenticated": false
+  },
+  "private_table_count": 34,
+  "public_internal_function_exec": 0,
+  "public_table_count": 45,
+  "roles": 7,
+  "service_areas": [
+    {
+      "code": "business-field-services",
+      "name": "Business Field Services",
+      "status": "draft"
+    },
+    {
+      "code": "construction",
+      "name": "Construction",
+      "status": "draft"
+    },
+    {
+      "code": "home-utilities",
+      "name": "Home & Utilities",
+      "status": "draft"
+    },
+    {
+      "code": "procurement",
+      "name": "Procurement",
+      "status": "draft"
+    }
+  ],
+  "services": 0,
+  "states": [
+    {
+      "code": "LA",
+      "name": "Lagos"
+    }
+  ],
+  "tables_without_rls": [],
+  "unsafe_definer_search_paths": 0,
+  "unvalidated_constraints": 0
+}

@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Downloaded native database tools and recovery archives are not app source.
+    ".local-tools/**",
   ]),
 ]);
 

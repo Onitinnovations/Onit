@@ -1,0 +1,32 @@
+{
+  "projectRef": "utoxjlsvqfmmzsjruzsm",
+  "verifiedAt": "2026-10-24T21:07:34.632Z",
+  "publicConfigurationUpdated": true,
+  "checks": [
+    {
+      "name": "Auth settings",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Public catalogue",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Customer anonymous denial",
+      "status": 401,
+      "passed": true
+    },
+    {
+      "name": "Private schema unexposed",
+      "status": 406,
+      "passed": true
+    },
+    {
+      "name": "Helper schema unexposed",
+      "status": 406,
+      "passed": true
+    }
+  ]
+}

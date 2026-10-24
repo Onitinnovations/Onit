@@ -1,0 +1,53 @@
+{
+  "inspectionDate": "2026-10-24",
+  "project": {
+    "ref": "utoxjlsvqfmmzsjruzsm",
+    "name": "OnIt",
+    "region": "eu-west-1",
+    "status": "ACTIVE_HEALTHY",
+    "matchesConfiguredProject": true,
+    "previewBranchesReturned": 0,
+    "productionOrTestLabel": "not established"
+  },
+  "postgres": {
+    "actualVersion": "17.11",
+    "projectReleaseVersion": "17.11.0.003",
+    "inRecovery": false,
+    "queryRole": "postgres"
+  },
+  "counts": {
+    "applicationTablesOrViews": 0,
+    "applicationFunctions": 0,
+    "applicationIndexes": 0,
+    "applicationConstraints": 0,
+    "applicationOrStoragePolicies": 0,
+    "authUsers": 0,
+    "storageBuckets": 0,
+    "storageObjects": 0,
+    "vaultSecrets": 0,
+    "providerManagedTables": 39
+  },
+  "migrationHistoryRelationExists": false,
+  "extensions": [
+    { "name": "pg_stat_statements", "version": "1.11" },
+    { "name": "pgcrypto", "version": "1.3" },
+    { "name": "plpgsql", "version": "1.0" },
+    { "name": "supabase_vault", "version": "0.3.1" },
+    { "name": "uuid-ossp", "version": "1.1" }
+  ],
+  "recovery": {
+    "listedBackups": null,
+    "pitrEnabled": false,
+    "walgEnabled": true,
+    "verifiedRestorePoint": false,
+    "logicalDumpAttempt": "timed out after 25 seconds; zero-byte invalid output"
+  },
+  "candidate": {
+    "migrationCount": 12,
+    "manifestFilesIncludingSeed": 13,
+    "hashDifferences": 0,
+    "migrationsApplied": 0,
+    "seedApplied": false
+  },
+  "deploymentStatus": "stopped before migration dry run/application: usable recovery point and sufficient compatibility validation not established"
+}

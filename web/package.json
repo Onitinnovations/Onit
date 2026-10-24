@@ -6,7 +6,17 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "db:start": "supabase start",
+    "db:migrate:local": "supabase migration up --local",
+    "db:seed:local": "node scripts/database/local.mjs seed",
+    "db:test:local": "node scripts/database/local.mjs test",
+    "db:test:api": "node scripts/database/test-local-api.mjs",
+    "db:test:embedded": "node scripts/database/test-embedded.mjs",
+    "db:test:upgrade": "node scripts/database/test-upgrade.mjs",
+    "db:dictionary": "node scripts/database/test-embedded.mjs --dictionary",
+    "db:types:embedded": "node scripts/database/test-embedded.mjs --types",
+    "db:types": "node scripts/database/generate-types.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.117.3",
@@ -15,12 +25,14 @@
     "react-dom": "19.3.0"
   },
   "devDependencies": {
+    "@electric-sql/pglite": "0.5.11",
     "@tailwindcss/turbopack": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.4.0",
+    "supabase": "2.122.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

@@ -1,0 +1,11 @@
+{
+  "projectHostname": "utoxjlsvqfmmzsjruzsm.supabase.co",
+  "method": "GET public REST OpenAPI only; no row queries or hosted SQL",
+  "inspectedAt": "2026-10-24T19:56:09.423Z",
+  "completeSchemaInspected": false,
+  "privateSchemaInspected": false,
+  "migrationHistoryInspected": false,
+  "productionOrTestData": "unknown; no table data queried",
+  "httpStatus": 401,
+  "note": "Remote API did not allow public OpenAPI inspection; no schema findings inferred."
+}
