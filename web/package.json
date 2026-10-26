@@ -18,7 +18,9 @@
     "db:types:embedded": "node scripts/database/test-embedded.mjs --types",
     "db:types": "node scripts/database/generate-types.mjs",
     "db:test:phase2": "node scripts/database/test-phase2-native.mjs",
-    "db:types:phase2": "node scripts/database/generate-phase2-types.mjs"
+    "db:types:phase2": "node scripts/database/generate-phase2-types.mjs",
+    "db:test:operations": "node scripts/database/test-operations-native.mjs",
+    "db:types:operations": "node scripts/database/generate-operations-types.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.117.3",

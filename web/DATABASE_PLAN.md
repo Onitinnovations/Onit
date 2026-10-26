@@ -1,3 +1,5 @@
+> Current operational checkpoint: [Increment 3 provider network](docs/database/phase-2-increment-3-report.md) is implemented locally with five additive migrations and 22 private tables (local total22 migrations/115 RLS tables). Hosted remains the verified Increment 2 baseline: 17 migrations/93 tables. Increments 4–6 are not implemented; see the [continuation record](docs/database/phase-2-operations-continuation.md).
+
 # OnIt database foundation — proposed architecture
 
 Current execution: [Phase 1 hosted deployment](docs/database/hosted-deployment-report.md) is complete. [Phase 2 Increment 1](docs/database/phase-2-report.md) and [Increment 2 pricing/assessments](docs/database/phase-2-increment-2-report.md) add five local-only migrations and 14 tables, for 93 application tables with RLS and PostgreSQL 17 tests. Provider/dispatch/fulfilment remain future increments. Historical readiness statements below are superseded by these reports.

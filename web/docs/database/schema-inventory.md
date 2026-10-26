@@ -1,3 +1,5 @@
+> Implemented local provider delta: [22 private provider/personnel/outbox tables](phase-2-increment-3-dictionary.md), [relationships](phase-2-increment-3-erd.md), [commands/security/tests](phase-2-increment-3-report.md). Local total115 RLS tables, hosted93 unchanged. The inventory below includes historical plans and must not be read as a claim that orders/dispatch/fulfilment/specialised operations are implemented.
+
 > Current hosted status (2026-10-26): Phase 2 Increments 1 and 2 deployed to OnIt; 17 migrations and 93 RLS tables verified. Canonical hosted types and application checks passed. Authenticated workflow HTTP tests remain outstanding. See [release checkpoint](phase-2-hosted-deployment-report.md). Earlier local-only statements below are historical.
 
 # Proposed schema inventory and requirements mapping

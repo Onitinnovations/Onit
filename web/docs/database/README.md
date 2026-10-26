@@ -1,3 +1,5 @@
+> Current entry point: [Increment 3 local provider checkpoint](phase-2-increment-3-report.md), [generated dictionary](phase-2-increment-3-dictionary.md), [ERD](phase-2-increment-3-erd.md), [continuation](phase-2-operations-continuation.md). Hosted Increments1/2 are deployed (17 migrations/93 tables); local candidate has22 migrations/115 RLS tables. Use npm run db:test:operations and npm run db:types:operations. Earlier runtime/deployment statements below are historical; native PostgreSQL17.11 and CLI login are available, while full Supabase Docker/HTTP validation remains outstanding.
+
 # Database development
 
 Start with the current [Phase 1 report](phase-1-report.md), [security guide](rls-policies.md), [deployment procedure](phase-1-deployment.md), root [database plan](../../DATABASE_PLAN.md), [inventory](schema-inventory.md), and generated [foundation dictionary](data-dictionary.md). Twelve migrations and public API types are implemented. No hosted database has been linked or modified.

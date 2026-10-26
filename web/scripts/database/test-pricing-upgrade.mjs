@@ -1,12 +1,12 @@
 import { readFileSync,readdirSync } from 'node:fs';
 
 /** Replay real Increment 1 fixtures before applying Increment 2. Local only. */
-export function testPricingUpgrade({run,env,archive,listPath}) {
+export function testPricingUpgrade({run,env,archive,listPath,maxMigration}) {
  if(env.PGHOST!=='127.0.0.1'||env.PGUSER!=='postgres')throw new Error('Upgrade replay requires isolated loopback PostgreSQL.');
  const database='onit_upgrade_'+Date.now();
  run('createdb',['-T','template0',database]);
  run('pg_restore',['--no-owner','--exit-on-error','--use-list',listPath,'-d',database,archive]);
- const files=readdirSync('supabase/migrations').filter(f=>f.endsWith('.sql')).sort();
+ const files=readdirSync('supabase/migrations').filter(f=>f.endsWith('.sql')&&(!maxMigration||f<maxMigration)).sort();
  const read=file=>readFileSync('supabase/migrations/'+file,'utf8');
  const first=files.filter(file=>file<'20261025000300');
  const added=files.filter(file=>file>='20261025000300');

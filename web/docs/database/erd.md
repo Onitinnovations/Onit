@@ -1,3 +1,5 @@
+> Current implemented provider relationships: [Increment 3 physical FK graph](phase-2-increment-3-erd.md) and [provider workflow/security report](phase-2-increment-3-report.md). Contracting parties, executing personnel, qualifications, shared human/processing capacity and reservations are implemented locally. Orders/dispatch/fulfilment/specialised entities remain planned.
+
 # OnIt conceptual ERD
 
 The [Phase 2 implemented request/quotation ERD](phase-2-schema.md#implemented-erd) shows the current local delta. Orders, providers, dispatch and specialised entities below remain planned, not implemented by this increment.

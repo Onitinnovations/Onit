@@ -46,7 +46,8 @@ try{
   const [hash,file]=entry.split(/\s+/,2);
   if(createHash('sha256').update(readFileSync(file)).digest('hex')!==hash)throw new Error('Phase 1 candidate changed: '+file);
  }
- for(const file of readdirSync('supabase/migrations').filter(f=>f.endsWith('.sql')).sort()){
+ // Historical Increment 1/2 runner remains reproducible after later candidates appear.
+ for(const file of readdirSync('supabase/migrations').filter(f=>f.endsWith('.sql')&&f<'20261026000000').sort()){
   const contents=readFileSync('supabase/migrations/'+file);
   report.migrationHashes[file]=createHash('sha256').update(contents).digest('hex');
   sql(contents.toString('utf8'));report.migrations.push(file);console.log('PASS migration',file);
@@ -66,7 +67,7 @@ try{
  if(security.tables!==93||security.tables_without_rls||security.public_definers||security.unsafe_search_paths||security.public_internal_execute||security.private_anon_usage||security.private_authenticated_usage||security.client_transaction_writes)throw new Error('Candidate catalog security gate failed.');
  console.log('PASS candidate catalog: 93 RLS tables; private schemas, definers and client write grants secured.');
  const fixture=readFileSync('supabase/fixtures/catalogue-development.sql','utf8');
- for(const file of readdirSync('supabase/tests').filter(f=>f.endsWith('.sql')).sort()){
+ for(const file of readdirSync('supabase/tests').filter(f=>f.endsWith('.sql')&&f<'005').sort()){
   let source=readFileSync('supabase/tests/'+file,'utf8');
   // Keep the final synthetic fixture only in this newly-created local database
   // so separate connections can exercise real locking after SQL assertions.
@@ -78,7 +79,7 @@ try{
  const {testRequestConcurrency}=await import('./test-request-concurrency.mjs');
  report.concurrency=await testRequestConcurrency({bin,env,database});
  const {testPricingUpgrade}=await import('./test-pricing-upgrade.mjs');
- report.upgrade=testPricingUpgrade({run,env,archive,listPath});
+ report.upgrade=testPricingUpgrade({run,env,archive,listPath,maxMigration:'20261026000000'});
  report.passed=true;
  writeFileSync('docs/database/phase-2-candidate.sha256',Object.entries(report.migrationHashes).map(([file,hash])=>`${hash}  supabase/migrations/${file}`).join('\n')+'\n');
 }catch(error){report.error=error.message;console.error(error.message);process.exitCode=1;}
