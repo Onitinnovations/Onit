@@ -994,6 +994,319 @@ export type Database = {
           },
         ]
       }
+      quotation_line_items: {
+        Row: {
+          created_at: string
+          created_by: string
+          description: string
+          discount: number
+          gross: number
+          id: string
+          kind: string
+          money_scale: number
+          position: number
+          quantity: number
+          quotation_version_id: string
+          tax: number
+          tax_label: string | null
+          tax_rate: number
+          tax_rule_id: string | null
+          total: number
+          unit_price: number
+        }
+        Insert: {
+          created_at?: string
+          created_by: string
+          description: string
+          discount: number
+          gross: number
+          id?: string
+          kind: string
+          money_scale?: number
+          position: number
+          quantity: number
+          quotation_version_id: string
+          tax: number
+          tax_label?: string | null
+          tax_rate: number
+          tax_rule_id?: string | null
+          total: number
+          unit_price: number
+        }
+        Update: {
+          created_at?: string
+          created_by?: string
+          description?: string
+          discount?: number
+          gross?: number
+          id?: string
+          kind?: string
+          money_scale?: number
+          position?: number
+          quantity?: number
+          quotation_version_id?: string
+          tax?: number
+          tax_label?: string | null
+          tax_rate?: number
+          tax_rule_id?: string | null
+          total?: number
+          unit_price?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "quotation_line_items_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "quotation_line_items_quotation_version_id_fkey"
+            columns: ["quotation_version_id"]
+            isOneToOne: false
+            referencedRelation: "quotation_versions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "quotation_line_scale_fk"
+            columns: ["quotation_version_id", "money_scale"]
+            isOneToOne: false
+            referencedRelation: "quotation_versions"
+            referencedColumns: ["id", "money_scale"]
+          },
+        ]
+      }
+      quotation_versions: {
+        Row: {
+          approved_at: string | null
+          approved_by: string | null
+          created_at: string
+          created_by: string
+          currency_id: string
+          decided_at: string | null
+          decided_by: string | null
+          discount_total: number
+          id: string
+          money_scale: number
+          pricing_mode: string
+          quotation_id: string
+          request_revision: number
+          status: string
+          subtotal: number
+          tax_total: number
+          terms: string
+          total: number
+          updated_at: string
+          valid_until: string
+          version: number
+        }
+        Insert: {
+          approved_at?: string | null
+          approved_by?: string | null
+          created_at?: string
+          created_by: string
+          currency_id: string
+          decided_at?: string | null
+          decided_by?: string | null
+          discount_total: number
+          id?: string
+          money_scale?: number
+          pricing_mode: string
+          quotation_id: string
+          request_revision: number
+          status?: string
+          subtotal: number
+          tax_total: number
+          terms: string
+          total: number
+          updated_at?: string
+          valid_until: string
+          version: number
+        }
+        Update: {
+          approved_at?: string | null
+          approved_by?: string | null
+          created_at?: string
+          created_by?: string
+          currency_id?: string
+          decided_at?: string | null
+          decided_by?: string | null
+          discount_total?: number
+          id?: string
+          money_scale?: number
+          pricing_mode?: string
+          quotation_id?: string
+          request_revision?: number
+          status?: string
+          subtotal?: number
+          tax_total?: number
+          terms?: string
+          total?: number
+          updated_at?: string
+          valid_until?: string
+          version?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "quotation_versions_approved_by_fkey"
+            columns: ["approved_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "quotation_versions_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "quotation_versions_currency_id_fkey"
+            columns: ["currency_id"]
+            isOneToOne: false
+            referencedRelation: "currencies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "quotation_versions_decided_by_fkey"
+            columns: ["decided_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "quotation_versions_quotation_id_fkey"
+            columns: ["quotation_id"]
+            isOneToOne: false
+            referencedRelation: "quotations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      quotations: {
+        Row: {
+          created_at: string
+          created_by: string
+          id: string
+          reference: string
+          request_id: string
+        }
+        Insert: {
+          created_at?: string
+          created_by: string
+          id?: string
+          reference?: string
+          request_id: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string
+          id?: string
+          reference?: string
+          request_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "quotations_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "quotations_request_id_fkey"
+            columns: ["request_id"]
+            isOneToOne: true
+            referencedRelation: "service_requests"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      request_attachments: {
+        Row: {
+          created_at: string
+          created_by: string
+          customer_account_id: string
+          document_object_id: string
+          id: string
+          request_id: string
+        }
+        Insert: {
+          created_at?: string
+          created_by: string
+          customer_account_id: string
+          document_object_id: string
+          id?: string
+          request_id: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string
+          customer_account_id?: string
+          document_object_id?: string
+          id?: string
+          request_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "request_attachments_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "request_attachments_request_id_customer_account_id_fkey"
+            columns: ["request_id", "customer_account_id"]
+            isOneToOne: false
+            referencedRelation: "service_requests"
+            referencedColumns: ["id", "customer_account_id"]
+          },
+        ]
+      }
+      request_history: {
+        Row: {
+          action: string
+          actor_id: string
+          created_at: string
+          id: string
+          request_id: string
+          revision: number
+        }
+        Insert: {
+          action: string
+          actor_id: string
+          created_at?: string
+          id?: string
+          request_id: string
+          revision: number
+        }
+        Update: {
+          action?: string
+          actor_id?: string
+          created_at?: string
+          id?: string
+          request_id?: string
+          revision?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "request_history_actor_id_fkey"
+            columns: ["actor_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "request_history_request_id_fkey"
+            columns: ["request_id"]
+            isOneToOne: false
+            referencedRelation: "service_requests"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       service_areas: {
         Row: {
           code: string
@@ -1912,6 +2225,131 @@ export type Database = {
           },
         ]
       }
+      service_requests: {
+        Row: {
+          answers: Json
+          booking_schema_id: string
+          branch_id: string | null
+          cancelled_at: string | null
+          created_at: string
+          created_by: string
+          customer_account_id: string
+          department_id: string | null
+          id: string
+          instructions: string
+          organisation_id: string | null
+          preferred_end: string | null
+          preferred_start: string | null
+          reference: string
+          reviewed_at: string | null
+          revision: number
+          service_id: string
+          service_location_id: string
+          service_version_id: string
+          status: string
+          submitted_at: string | null
+          updated_at: string
+        }
+        Insert: {
+          answers?: Json
+          booking_schema_id: string
+          branch_id?: string | null
+          cancelled_at?: string | null
+          created_at?: string
+          created_by: string
+          customer_account_id: string
+          department_id?: string | null
+          id?: string
+          instructions?: string
+          organisation_id?: string | null
+          preferred_end?: string | null
+          preferred_start?: string | null
+          reference?: string
+          reviewed_at?: string | null
+          revision?: number
+          service_id: string
+          service_location_id: string
+          service_version_id: string
+          status?: string
+          submitted_at?: string | null
+          updated_at?: string
+        }
+        Update: {
+          answers?: Json
+          booking_schema_id?: string
+          branch_id?: string | null
+          cancelled_at?: string | null
+          created_at?: string
+          created_by?: string
+          customer_account_id?: string
+          department_id?: string | null
+          id?: string
+          instructions?: string
+          organisation_id?: string | null
+          preferred_end?: string | null
+          preferred_start?: string | null
+          reference?: string
+          reviewed_at?: string | null
+          revision?: number
+          service_id?: string
+          service_location_id?: string
+          service_version_id?: string
+          status?: string
+          submitted_at?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "service_requests_booking_schema_id_service_version_id_fkey"
+            columns: ["booking_schema_id", "service_version_id"]
+            isOneToOne: false
+            referencedRelation: "service_booking_schemas"
+            referencedColumns: ["id", "service_version_id"]
+          },
+          {
+            foreignKeyName: "service_requests_branch_id_customer_account_id_organisatio_fkey"
+            columns: ["branch_id", "customer_account_id", "organisation_id"]
+            isOneToOne: false
+            referencedRelation: "corporate_account_branches"
+            referencedColumns: ["id", "customer_account_id", "organisation_id"]
+          },
+          {
+            foreignKeyName: "service_requests_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "service_requests_customer_account_id_fkey"
+            columns: ["customer_account_id"]
+            isOneToOne: false
+            referencedRelation: "customer_profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "service_requests_organisation_id_fkey"
+            columns: ["organisation_id"]
+            isOneToOne: false
+            referencedRelation: "organisations"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "service_requests_service_location_id_customer_account_id_fkey"
+            columns: ["service_location_id", "customer_account_id"]
+            isOneToOne: false
+            referencedRelation: "service_locations"
+            referencedColumns: ["id", "customer_account_id"]
+          },
+          {
+            foreignKeyName: "service_requests_service_version_id_service_id_fkey"
+            columns: ["service_version_id", "service_id"]
+            isOneToOne: false
+            referencedRelation: "service_versions"
+            referencedColumns: ["id", "service_id"]
+          },
+        ]
+      }
       service_requirements: {
         Row: {
           code: string
@@ -2369,7 +2807,59 @@ export type Database = {
         }
         Returns: string
       }
+      approve_pricing_card: { Args: { p_id: string }; Returns: string }
+      assessment_command: {
+        Args: { p_action: string; p_data: Json; p_request: string }
+        Returns: string
+      }
+      attach_request_document: {
+        Args: { p_document: string; p_id: string }
+        Returns: string
+      }
+      change_service_request: {
+        Args: {
+          p_action: string
+          p_answers?: Json
+          p_end?: string
+          p_id: string
+          p_instructions?: string
+          p_revision: number
+          p_start?: string
+        }
+        Returns: number
+      }
+      commercial_policy: {
+        Args: { p_action: string; p_data: Json }
+        Returns: string
+      }
+      create_pricing_card: {
+        Args: { p_config: Json; p_rules: Json }
+        Returns: string
+      }
+      create_service_request: {
+        Args: {
+          p_account: string
+          p_address: string
+          p_answers: Json
+          p_branch?: string
+          p_department?: string
+          p_end?: string
+          p_instructions?: string
+          p_key: string
+          p_start?: string
+          p_version: string
+        }
+        Returns: string
+      }
+      decide_quotation: {
+        Args: { p_action: string; p_id: string }
+        Returns: string
+      }
       ensure_individual_customer: { Args: never; Returns: string }
+      generate_quotation: {
+        Args: { p_input: Json; p_key: string; p_request: string }
+        Returns: string
+      }
       prepare_customer_upload: {
         Args: {
           p_account_id: string
@@ -2377,6 +2867,29 @@ export type Database = {
           p_content_type: string
         }
         Returns: Json
+      }
+      prepare_quotation: {
+        Args: {
+          p_currency: string
+          p_key: string
+          p_lines: Json
+          p_request: string
+          p_terms: string
+          p_valid_until: string
+        }
+        Returns: string
+      }
+      read_assessment: { Args: { p_id: string }; Returns: Json }
+      read_pricing_card: { Args: { p_id: string }; Returns: Json }
+      read_quotation: { Args: { p_id: string }; Returns: Json }
+      read_quotation_commercial: { Args: { p_id: string }; Returns: Json }
+      retire_pricing_card: {
+        Args: { p_id: string; p_key: string; p_reason: string }
+        Returns: string
+      }
+      review_service_request: {
+        Args: { p_id: string; p_revision: number }
+        Returns: number
       }
     }
     Enums: {

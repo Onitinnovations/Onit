@@ -1,3 +1,5 @@
+> Current hosted status (2026-10-26): Phase 2 Increments 1 and 2 deployed to OnIt; 17 migrations and 93 RLS tables verified. Canonical hosted types and application checks passed. Authenticated workflow HTTP tests remain outstanding. See [release checkpoint](phase-2-hosted-deployment-report.md). Earlier local-only statements below are historical.
+
 # Proposed schema inventory and requirements mapping
 
 Current delta: [Phase 2 Increment 1 dictionary](phase-2-schema.md) maps ten local request/quotation tables, and [Increment 2 addendum](phase-2-increment-2-schema.md) adds four private assessment/commercial tables plus shared pricing extensions. Hosted Phase 1 remains79 tables; local candidate is93. [Latest execution report](phase-2-increment-2-report.md) distinguishes delivered pricing/assessments from future provider/dispatch/fulfilment work. Later inventory rows remain capability plans.

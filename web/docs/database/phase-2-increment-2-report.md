@@ -1,3 +1,5 @@
+> Current hosted status (2026-10-26): Phase 2 Increments 1 and 2 deployed to OnIt; 17 migrations and 93 RLS tables verified. Canonical hosted types and application checks passed. Authenticated workflow HTTP tests remain outstanding. See [release checkpoint](phase-2-hosted-deployment-report.md). Earlier local-only statements below are historical.
+
 # Phase 2 Increment 2 — pricing, assessments and quotations
 
 Date: **2026-10-26, Africa/Lagos**. Implemented and tested locally on PostgreSQL **17.11**. No hosted connection, migration, seed, project-link change or live-data modification was performed. The configured project remains `utoxjlsvqfmmzsjruzsm`. No payment, wallet, payout, settlement, order-confirmation or provider-dispatch functionality was introduced.

@@ -1,3 +1,5 @@
+> Current hosted status (2026-10-26): Phase 2 Increments 1 and 2 deployed to OnIt; 17 migrations and 93 RLS tables verified. Canonical hosted types and application checks passed. Authenticated workflow HTTP tests remain outstanding. See [release checkpoint](phase-2-hosted-deployment-report.md). Earlier local-only statements below are historical.
+
 # Phase 2 — request and quotation implementation increment
 
 > Current local status: [Increment 2 pricing/assessment report](phase-2-increment-2-report.md) and [schema addendum](phase-2-increment-2-schema.md) supersede the pricing/assessment deferrals below. Five local Phase 2 migrations now accompany the 12 Phase 1 migrations, for 93 RLS tables. This document retains the original Increment 1 checkpoint; provider/dispatch/fulfilment remain future work. No Phase 2 deployment occurred.
