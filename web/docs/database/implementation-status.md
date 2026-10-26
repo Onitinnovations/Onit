@@ -1,4 +1,4 @@
-> Current local checkpoint (2026-10-26): [Increment 3 provider network](phase-2-increment-3-report.md), including global executing-personnel capacity/calendars. Local22 migrations/115 RLS tables; hosted unchanged at17/93. No new commit, push or deployment. Increments4–6 remain; [continuation](phase-2-operations-continuation.md).
+> Current hosted checkpoint (2026-10-27): Increment 3 deployed and verified on OnIt: 22 migrations, 115 RLS tables (51 public / 64 private), PostgreSQL 17.11. Canonical types updated. See [deployment report](phase-2-increment-3-hosted-deployment-report.md). Increments 4?6 remain unimplemented; earlier status entries below are historical.
 
 > Current hosted status (2026-10-26): Phase 2 Increments 1 and 2 deployed to OnIt; 17 migrations and 93 RLS tables verified. Canonical hosted types and application checks passed. Authenticated workflow HTTP tests remain outstanding. See [release checkpoint](phase-2-hosted-deployment-report.md). Earlier local-only statements below are historical.
 

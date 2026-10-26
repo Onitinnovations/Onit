@@ -1,4 +1,4 @@
-> Current entry point: [Increment 3 local provider checkpoint](phase-2-increment-3-report.md), [generated dictionary](phase-2-increment-3-dictionary.md), [ERD](phase-2-increment-3-erd.md), [continuation](phase-2-operations-continuation.md). Hosted Increments1/2 are deployed (17 migrations/93 tables); local candidate has22 migrations/115 RLS tables. Use npm run db:test:operations and npm run db:types:operations. Earlier runtime/deployment statements below are historical; native PostgreSQL17.11 and CLI login are available, while full Supabase Docker/HTTP validation remains outstanding.
+> Current hosted checkpoint (2026-10-27): Increment 3 deployed and verified on OnIt: 22 migrations, 115 RLS tables (51 public / 64 private), PostgreSQL 17.11. Canonical types updated. See [deployment report](phase-2-increment-3-hosted-deployment-report.md). Increments 4?6 remain unimplemented; earlier status entries below are historical.
 
 # Database development
 

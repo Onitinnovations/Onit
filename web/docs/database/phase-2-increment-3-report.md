@@ -1,5 +1,7 @@
 # Increment 3 — provider network implementation checkpoint
 
+> Deployment update (2026-10-27): Increment 3 is committed, pushed and deployed: 22 migrations / 115 RLS tables; canonical hosted types updated. See [release evidence](phase-2-increment-3-hosted-deployment-report.md). Earlier local-only and uncommitted statements below describe the implementation checkpoint. This deployment assignment does not authorise Increment 4 deployment or begin its implementation.
+
 Implementation: 2026-10-26–27, Africa/Lagos. **Local implementation only. The Increments 3–6 master assignment is not complete.** This session preserves the working, tested Increment 3 provider-network backend checkpoint, including shared executing-personnel resources. Increments 4, 5 and 6 have not been implemented or started. Runtime/integration limitations remain explicit below; this is not a claim that the full operational backend is complete.
 
 ## Verified baseline and boundaries

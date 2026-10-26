@@ -21,11 +21,17 @@ try{
  'anon_private',has_schema_privilege('anon','private','USAGE'),'user_private',has_schema_privilege('authenticated','private','USAGE'),
  'client_writes',(select count(*) from information_schema.role_table_grants where grantee in ('anon','authenticated') and table_schema='public' and table_name in ('service_requests','request_history','request_attachments','quotations','quotation_versions','quotation_line_items') and privilege_type<>'SELECT'),
  'worker_client_execute',has_function_privilege('authenticated','public.operational_event_worker(text,jsonb)','EXECUTE') or has_function_privilege('anon','public.operational_event_worker(text,jsonb)','EXECUTE'),
+ 'client_private_grants',(select count(*) from information_schema.role_table_grants where table_schema='private' and grantee in ('anon','authenticated')),
  'auth_users',(select count(*) from auth.users),
  'history',(select jsonb_agg(version order by version) from supabase_migrations.schema_migrations),
  'buckets',(select jsonb_agg(jsonb_build_object('id',id,'public',public,'limit',file_size_limit,'mime_types',allowed_mime_types) order by id) from storage.buckets)) as catalog`)[0].catalog;
  const c=report.catalog,versions=readdirSync('supabase/migrations').filter(f=>f.endsWith('.sql')).sort().map(f=>f.slice(0,14));
- if(c.tables!==115||c.missing_rls||c.public_definers||c.unsafe_paths||c.public_internal_execute||c.anon_private||c.user_private||c.client_writes||c.worker_client_execute||!isDeepStrictEqual(c.history,versions)||!isDeepStrictEqual(c.buckets,before.inventory.storage_buckets))throw Error('Hosted catalog/security/history/storage verification failed');
+ if(c.tables!==115||c.missing_rls||c.public_definers||c.unsafe_paths||c.public_internal_execute||c.anon_private||c.user_private||c.client_writes||c.worker_client_execute||c.client_private_grants||!isDeepStrictEqual(c.history,versions)||!isDeepStrictEqual(c.buckets,before.inventory.storage_buckets))throw Error('Hosted catalog/security/history/storage verification failed');
+ const signature=readFileSync('supabase/inspection/application_signature.sql','utf8');
+ const localEnv={...process.env,PGHOST:'127.0.0.1',PGPORT:'55439',PGUSER:'postgres',PGDATABASE:tests.database,PGSSLMODE:'disable'};delete localEnv.PGPASSWORD;
+ const replay=spawnSync('.local-tools/postgres17/pgsql/bin/psql.exe',['-X','-q','-t','-A','-v','ON_ERROR_STOP=1'],{encoding:'utf8',windowsHide:true,env:localEnv,input:signature,maxBuffer:32*1024*1024});
+ if(replay.status!==0||!isDeepStrictEqual(JSON.parse(replay.stdout),query(signature)[0].signature))throw Error('Deployed application definitions differ from tested candidate');
+ report.catalogDefinitionMatch=true;
  const cutoff=before.startedAt;
  const rowSql="select jsonb_object_agg(key,jsonb_build_object('count',count,'hash',hash)) as rows from ("+before.inventory.application_tables.map(({schema,name})=>{const cols=before.inventory.columns.filter(c=>c.schema===schema&&c.table===name).map(c=>'"'+c.name+'"').join(',');return `select '${schema}.${name}' key,count(*)::text count,md5(coalesce(string_agg(row_json,'' order by row_json collate "C"),'')) hash from (select to_jsonb(t)::text row_json from (select ${cols} from "${schema}"."${name}" where created_at<='${cutoff}'::timestamptz) t) s`;}).join(' union all ')+') q';
  report.originalRowsPreserved=isDeepStrictEqual(query(rowSql)[0].rows,before.phase1Rows);

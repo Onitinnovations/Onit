@@ -1,4 +1,4 @@
-> Current implemented provider relationships: [Increment 3 physical FK graph](phase-2-increment-3-erd.md) and [provider workflow/security report](phase-2-increment-3-report.md). Contracting parties, executing personnel, qualifications, shared human/processing capacity and reservations are implemented locally. Orders/dispatch/fulfilment/specialised entities remain planned.
+> Current hosted checkpoint (2026-10-27): Increment 3 deployed and verified on OnIt: 22 migrations, 115 RLS tables (51 public / 64 private), PostgreSQL 17.11. Canonical types updated. See [deployment report](phase-2-increment-3-hosted-deployment-report.md). Increments 4?6 remain unimplemented; earlier status entries below are historical.
 
 # OnIt conceptual ERD
 

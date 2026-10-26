@@ -2807,6 +2807,7 @@ export type Database = {
         }
         Returns: string
       }
+      apply_provider: { Args: { p_data: Json; p_key: string }; Returns: string }
       approve_pricing_card: { Args: { p_id: string }; Returns: string }
       assessment_command: {
         Args: { p_action: string; p_data: Json; p_request: string }
@@ -2860,6 +2861,18 @@ export type Database = {
         Args: { p_input: Json; p_key: string; p_request: string }
         Returns: string
       }
+      list_providers: {
+        Args: { p_after?: string; p_limit?: number; p_status?: string }
+        Returns: Json
+      }
+      operational_event_worker: {
+        Args: { p_action: string; p_data: Json }
+        Returns: Json
+      }
+      personnel_command: {
+        Args: { p_action: string; p_data: Json; p_key: string }
+        Returns: string
+      }
       prepare_customer_upload: {
         Args: {
           p_account_id: string
@@ -2879,8 +2892,61 @@ export type Database = {
         }
         Returns: string
       }
+      provider_activity: {
+        Args: {
+          p_before?: string
+          p_before_id?: string
+          p_limit?: number
+          p_provider: string
+        }
+        Returns: Json
+      }
+      provider_command: {
+        Args: {
+          p_action: string
+          p_data: Json
+          p_key: string
+          p_provider: string
+        }
+        Returns: string
+      }
+      provider_configuration: {
+        Args: { p_action: string; p_data: Json; p_key: string }
+        Returns: string
+      }
+      provider_document_reference: {
+        Args: { p_document: string; p_provider: string }
+        Returns: Json
+      }
+      provider_eligibility: {
+        Args: {
+          p_end: string
+          p_provider: string
+          p_service: string
+          p_start: string
+          p_units: string
+          p_worker?: string
+          p_zone: string
+        }
+        Returns: Json
+      }
+      provider_reservation: {
+        Args: {
+          p_action: string
+          p_data: Json
+          p_key: string
+          p_provider: string
+        }
+        Returns: string
+      }
       read_assessment: { Args: { p_id: string }; Returns: Json }
+      read_personnel_resource: { Args: { p_profile: string }; Returns: Json }
       read_pricing_card: { Args: { p_id: string }; Returns: Json }
+      read_provider: { Args: { p_provider: string }; Returns: Json }
+      read_provider_configuration: {
+        Args: { p_id: string; p_kind: string }
+        Returns: Json
+      }
       read_quotation: { Args: { p_id: string }; Returns: Json }
       read_quotation_commercial: { Args: { p_id: string }; Returns: Json }
       retire_pricing_card: {
