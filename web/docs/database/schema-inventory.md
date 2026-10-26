@@ -1,5 +1,7 @@
 # Proposed schema inventory and requirements mapping
 
+Current delta: [Phase 2 Increment 1 dictionary](phase-2-schema.md) maps ten local request/quotation tables, and [Increment 2 addendum](phase-2-increment-2-schema.md) adds four private assessment/commercial tables plus shared pricing extensions. Hosted Phase 1 remains79 tables; local candidate is93. [Latest execution report](phase-2-increment-2-report.md) distinguishes delivered pricing/assessments from future provider/dispatch/fulfilment work. Later inventory rows remain capability plans.
+
 Status: proposed, subject to review and remote-schema reconciliation. Table names below are proposed base tables unless identified as views/consolidations. A comma-separated list denotes separate tables, not a JSON document. This is a capability-level inventory; full column-by-column dictionary and executable policy definitions follow approved migrations.
 
 Implementation update: **79 foundation tables** now exist in twelve ordered migrations and are described with actual columns, FKs, uniqueness, indexes, grants and RLS in [data-dictionary.md](data-dictionary.md). The full platform inventory below remains a capability checklist, not a claim that later domains are implemented. [phase-1-report.md](phase-1-report.md) is the current execution record; older status sections are historical.

@@ -168,7 +168,19 @@ insert into private.service_rate_cards(id,service_version_id,currency_id,code,ve
  cross join public.currencies c where s.code='laundry' and c.code='NGN';
 insert into private.service_pricing_rules(rate_card_id,service_version_id,code,rule_type,unit_amount,currency_id)
  select id,service_version_id,'TEST-LINE','fixed',1.23,currency_id from private.service_rate_cards where code='TEST-RATE';
-update private.service_rate_cards set status='approved',approved_at=now() where code='TEST-RATE';
+-- Later pricing migrations require an independently employed approver. Keep the
+-- original fixture usable for Phase 1-only replay as well as the full candidate.
+do $$ begin
+ if to_regprocedure('public.approve_pricing_card(uuid)') is not null then
+  update private.service_rate_cards set created_by='10000000-0000-0000-0000-000000000007' where code='TEST-RATE';
+  update private.employee_profiles set status='active' where profile_id='10000000-0000-0000-0000-000000000008';
+  insert into private.role_permissions(role_id,permission_id) select '50000000-0000-0000-0000-000000000001',id from private.permissions where code='pricing.approve';
+  perform set_config('request.jwt.claim.sub','10000000-0000-0000-0000-000000000008',true);
+  perform public.approve_pricing_card('80000000-0000-0000-0000-000000000001');
+ else
+  update private.service_rate_cards set status='approved',approved_at=now() where code='TEST-RATE';
+ end if;
+end $$;
 select pg_temp.assert_true(pg_temp.expect_error($q$ update private.service_pricing_rules set unit_amount=2 where code='TEST-LINE' $q$,'55000'),'Approved rate card price history cannot be rewritten');
 select pg_temp.assert_true(pg_temp.expect_error($q$ update private.service_rate_cards set valid_from=now()+interval '1 day' where code='TEST-RATE' $q$,'55000'),'Approved rate card terms cannot be rewritten');
 

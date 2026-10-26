@@ -12,11 +12,11 @@ const tsType = type => {
 
 // Supabase-compatible public API types derived from the tested PostgreSQL catalog.
 // This fallback does not claim to be official CLI output or a hosted schema dump.
-export async function writeTypes(db,root) {
+export async function writeTypes(db,root,options={}) {
   const tables=(await db.query(`select c.oid::int as oid,c.relname from pg_class c join pg_namespace n on n.oid=c.relnamespace
     where n.nspname='public' and c.relkind='r' order by c.relname`)).rows;
-  let out='// GENERATED from tested embedded PostgreSQL catalogs, not hosted Supabase.\n';
-  out+='// Regenerate: npm run db:types:embedded. Prefer npm run db:types after local Supabase validation.\n';
+  let out=`// GENERATED from tested ${options.source||'embedded PostgreSQL'} catalogs, not hosted Supabase.\n`;
+  out+=`// Regenerate: ${options.command||'npm run db:types:embedded'}. Prefer official Supabase CLI output after deployment.\n`;
   out+='export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[];\n\n';
   out+='export type Database = {\n  public: {\n    Tables: {\n';
   for(const table of tables) {
@@ -62,7 +62,8 @@ export async function writeTypes(db,root) {
   out+='export type PublicTableName = keyof Database["public"]["Tables"];\n';
   out+='export type TableRow<T extends PublicTableName> = Database["public"]["Tables"][T]["Row"];\n';
   await mkdir(`${root}/types`,{recursive:true});
-  await writeFile(`${root}/types/database.generated.ts.tmp`,out,'utf8');
-  await rename(`${root}/types/database.generated.ts.tmp`,`${root}/types/database.generated.ts`);
+  const filename=options.filename||'database.generated.ts';
+  await writeFile(`${root}/types/${filename}.tmp`,out,'utf8');
+  await rename(`${root}/types/${filename}.tmp`,`${root}/types/${filename}`);
   console.log(`Generated public API types from ${tables.length} tested PostgreSQL tables; private schemas excluded.`);
 }

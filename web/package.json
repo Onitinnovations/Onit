@@ -16,13 +16,16 @@
     "db:test:upgrade": "node scripts/database/test-upgrade.mjs",
     "db:dictionary": "node scripts/database/test-embedded.mjs --dictionary",
     "db:types:embedded": "node scripts/database/test-embedded.mjs --types",
-    "db:types": "node scripts/database/generate-types.mjs"
+    "db:types": "node scripts/database/generate-types.mjs",
+    "db:test:phase2": "node scripts/database/test-phase2-native.mjs",
+    "db:types:phase2": "node scripts/database/generate-phase2-types.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.117.3",
-    "next": "16.4.0",
+    "next": "16.4.3",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "server-only": "^0.0.1"
   },
   "devDependencies": {
     "@electric-sql/pglite": "0.5.11",
@@ -31,7 +34,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.4.0",
+    "eslint-config-next": "16.4.3",
     "supabase": "2.122.0",
     "tailwindcss": "^4",
     "typescript": "^5"

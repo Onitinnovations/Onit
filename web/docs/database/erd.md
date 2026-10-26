@@ -1,5 +1,9 @@
 # OnIt conceptual ERD
 
+The [Phase 2 implemented request/quotation ERD](phase-2-schema.md#implemented-erd) shows the current local delta. Orders, providers, dispatch and specialised entities below remain planned, not implemented by this increment.
+
+The [Increment 2 pricing/assessment graph](phase-2-increment-2-schema.md#implemented-relationship-graph) extends those shared transactions without separate quotation or order stores.
+
 Proposed principal relationships only. The [inventory](schema-inventory.md) covers supporting entities, junctions and all requirements. Dotted choices such as individual versus organisation ownership require XOR checks; relationships shown here do not grant access.
 
 The [implemented foundation FK graph](foundation-erd.md) is generated separately from actual PostgreSQL catalogs. Later-domain entities shown below remain planned until their migration phases pass the foundation validation gate.

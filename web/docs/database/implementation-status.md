@@ -1,5 +1,9 @@
 > **Current hosted status (2026-10-24): Phase 1 deployed and verified on OnIt, PostgreSQL 17.11. All 12 migrations applied; 79 tables have RLS. Native backup restore and 126 SQL assertions passed. Official hosted types and app checks passed. See [hosted deployment report](hosted-deployment-report.md). Earlier blocked-readiness statements below are historical and superseded.
 
+Local development: [Phase 2 request/quotation increment](phase-2-report.md) adds two migrations and ten tables, tested on PostgreSQL 17. It is not deployed and does not complete provider/dispatch/fulfilment or specialised operations.
+
+Latest local increment: [pricing/assessments and quotation completion](phase-2-increment-2-report.md), with three additional migrations/four private tables. Local total93 RLS tables; hosted Phase 1 unchanged. Provider Network Increment 3 is the next domain boundary.
+
 # Implementation status — foundation phase
 
 **Current record:** [phase-1-report.md](phase-1-report.md). The latest implementation request superseded the runtime stop described below. Twelve migrations, 79 RLS-protected tables and public TypeScript types are implemented; embedded SQL and upgrade validation ran. Hosted/Supabase validation remains blocked by Docker and authorised inventory access. All sections below are retained historical progress notes and must not be read as the current delivered scope.

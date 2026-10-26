@@ -1,5 +1,7 @@
 # OnIt database foundation — proposed architecture
 
+Current execution: [Phase 1 hosted deployment](docs/database/hosted-deployment-report.md) is complete. [Phase 2 Increment 1](docs/database/phase-2-report.md) and [Increment 2 pricing/assessments](docs/database/phase-2-increment-2-report.md) add five local-only migrations and 14 tables, for 93 application tables with RLS and PostgreSQL 17 tests. Provider/dispatch/fulfilment remain future increments. Historical readiness statements below are superseded by these reports.
+
 Status: **Phase 1 implemented in repository: twelve migrations, 79 RLS-protected tables, tested public TypeScript types; hosted deployment blocked pending authorised inventory and actual Supabase validation.** Date: 2026-10-24 (Africa/Lagos). The latest implementation instruction explicitly authorises local development despite remote/runtime limitations. See the [current implementation report](docs/database/phase-1-report.md), [policy guide](docs/database/rls-policies.md) and [deployment procedure](docs/database/phase-1-deployment.md). Repository findings below record the original inspection.
 
 ## Repository findings
