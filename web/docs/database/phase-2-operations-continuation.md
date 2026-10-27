@@ -1,4 +1,4 @@
-> Local Increment 4 checkpoint (2026-10-27): [service orders, matching and dispatch](phase-2-increment-4-report.md) implemented; candidate 26 migrations / 126 RLS tables (51 public, 75 private). Hosted remains 22 migrations / 115 tables. No push or deployment. Increment 5 must wait for checkpoint review. Earlier progress entries below are historical.
+> Hosted checkpoint (2026-10-27): Increment 4 deployed and verified on OnIt, PostgreSQL 17.11: 26 migrations / 126 RLS tables (51 public, 75 private); canonical types updated. [Deployment report](phase-2-increment-4-hosted-deployment-report.md). Increment 5 was not started. Earlier local-only progress entries below are historical.
 
 # Operational backend continuation — after the provider foundation checkpoint
 

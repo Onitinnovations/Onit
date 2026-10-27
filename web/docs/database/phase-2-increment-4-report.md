@@ -1,5 +1,7 @@
 # Increment 4 — service orders, matching and dispatch
 
+> Deployment update (2026-10-27): This increment is now committed, pushed and deployed, with 26 hosted migrations and 126 RLS tables verified. See the [hosted checkpoint report](phase-2-increment-4-hosted-deployment-report.md). Earlier local-only/no-authorisation statements below describe the implementation pass and are superseded by the separately authorised release. Increment 5 was not started.
+
 Date: 2026-10-27, Africa/Lagos. **Implemented and tested locally; not deployed.** No commit, push, hosted migration, real identity, operational configuration, environment change or AWS action was performed. Increment 5 was not started. The unrelated logo remains untouched.
 
 ## Baseline verified

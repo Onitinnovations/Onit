@@ -2837,6 +2837,10 @@ export type Database = {
         Args: { p_config: Json; p_rules: Json }
         Returns: string
       }
+      create_service_order: {
+        Args: { p_data: Json; p_key: string; p_quote: string }
+        Returns: string
+      }
       create_service_request: {
         Args: {
           p_account: string
@@ -2856,18 +2860,50 @@ export type Database = {
         Args: { p_action: string; p_id: string }
         Returns: string
       }
+      discover_order_candidates: {
+        Args: {
+          p_after_provider?: string
+          p_after_worker?: string
+          p_limit?: number
+          p_order: string
+          p_unit: string
+          p_units: string
+        }
+        Returns: Json
+      }
+      dispatch_command: {
+        Args: { p_action: string; p_data: Json; p_key: string; p_order: string }
+        Returns: string
+      }
       ensure_individual_customer: { Args: never; Returns: string }
+      expire_dispatch_offers: { Args: { p_limit: number }; Returns: number }
       generate_quotation: {
         Args: { p_input: Json; p_key: string; p_request: string }
         Returns: string
+      }
+      list_order_operations: {
+        Args: { p_after?: string; p_limit?: number; p_view: string }
+        Returns: Json
       }
       list_providers: {
         Args: { p_after?: string; p_limit?: number; p_status?: string }
         Returns: Json
       }
+      match_order: {
+        Args: { p_candidates: Json; p_order: string }
+        Returns: Json
+      }
       operational_event_worker: {
         Args: { p_action: string; p_data: Json }
         Returns: Json
+      }
+      order_command: {
+        Args: { p_action: string; p_data: Json; p_key: string; p_order: string }
+        Returns: string
+      }
+      order_policy_command: {
+        Args: { p_action: string; p_data: Json; p_key: string }
+        Returns: string
       }
       personnel_command: {
         Args: { p_action: string; p_data: Json; p_key: string }
@@ -2940,6 +2976,8 @@ export type Database = {
         Returns: string
       }
       read_assessment: { Args: { p_id: string }; Returns: Json }
+      read_order: { Args: { p_order: string }; Returns: Json }
+      read_order_policy: { Args: { p_id: string }; Returns: Json }
       read_personnel_resource: { Args: { p_profile: string }; Returns: Json }
       read_pricing_card: { Args: { p_id: string }; Returns: Json }
       read_provider: { Args: { p_provider: string }; Returns: Json }

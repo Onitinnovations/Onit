@@ -1,0 +1,193 @@
+{
+  "projectRef": "utoxjlsvqfmmzsjruzsm",
+  "verifiedAt": "2026-10-27T09:43:31.133Z",
+  "checks": [
+    {
+      "name": "Auth connection",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Catalogue connection",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Anonymous requests denied",
+      "status": 401,
+      "passed": true
+    },
+    {
+      "name": "Anonymous quotes denied",
+      "status": 401,
+      "passed": true
+    },
+    {
+      "name": "Private API denied",
+      "status": 406,
+      "passed": true
+    },
+    {
+      "name": "Helper API denied",
+      "status": 406,
+      "passed": true
+    },
+    {
+      "name": "Anonymous Storage listing denied",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Anonymous order command denied",
+      "status": 401,
+      "passed": true
+    },
+    {
+      "name": "Anonymous dispatch denied",
+      "status": 401,
+      "passed": true
+    },
+    {
+      "name": "Anonymous expiry worker denied",
+      "status": 401,
+      "passed": true
+    }
+  ],
+  "catalog": {
+    "anon_private": false,
+    "anonymous_order_execute": false,
+    "auth_users": 0,
+    "buckets": [
+      {
+        "id": "contracts",
+        "limit": 20971520,
+        "mime_types": [
+          "application/pdf"
+        ],
+        "public": false
+      },
+      {
+        "id": "customer-documents",
+        "limit": 20971520,
+        "mime_types": [
+          "application/pdf",
+          "image/jpeg",
+          "image/png",
+          "image/webp",
+          "text/plain"
+        ],
+        "public": false
+      },
+      {
+        "id": "employee-documents",
+        "limit": 20971520,
+        "mime_types": [
+          "application/pdf",
+          "image/jpeg",
+          "image/png"
+        ],
+        "public": false
+      },
+      {
+        "id": "field-evidence",
+        "limit": 20971520,
+        "mime_types": [
+          "application/pdf",
+          "image/jpeg",
+          "image/png",
+          "image/webp"
+        ],
+        "public": false
+      },
+      {
+        "id": "identity-documents",
+        "limit": 20971520,
+        "mime_types": [
+          "application/pdf",
+          "image/jpeg",
+          "image/png",
+          "image/webp"
+        ],
+        "public": false
+      },
+      {
+        "id": "invoices",
+        "limit": 20971520,
+        "mime_types": [
+          "application/pdf"
+        ],
+        "public": false
+      },
+      {
+        "id": "marketing-assets",
+        "limit": 20971520,
+        "mime_types": [
+          "image/jpeg",
+          "image/png",
+          "image/webp"
+        ],
+        "public": true
+      },
+      {
+        "id": "work-evidence",
+        "limit": 20971520,
+        "mime_types": [
+          "application/pdf",
+          "image/jpeg",
+          "image/png",
+          "image/webp"
+        ],
+        "public": false
+      }
+    ],
+    "client_private_grants": 0,
+    "client_writes": 0,
+    "expiry_client_execute": false,
+    "history": [
+      "20261024000100",
+      "20261024000200",
+      "20261024000300",
+      "20261024000400",
+      "20261024000500",
+      "20261024000600",
+      "20261024000700",
+      "20261024000800",
+      "20261024000900",
+      "20261024001000",
+      "20261024001100",
+      "20261024001200",
+      "20261025000100",
+      "20261025000200",
+      "20261025000300",
+      "20261025000400",
+      "20261025000500",
+      "20261026000100",
+      "20261026000200",
+      "20261026000300",
+      "20261026000400",
+      "20261026000500",
+      "20261027000100",
+      "20261027000200",
+      "20261027000300",
+      "20261027000400"
+    ],
+    "missing_rls": 0,
+    "new_operational_role_grants": 0,
+    "public_definers": 0,
+    "public_internal_execute": 0,
+    "schema_counts": {
+      "private": 75,
+      "public": 51
+    },
+    "tables": 126,
+    "unsafe_paths": 0,
+    "user_private": false,
+    "version": "17.11",
+    "worker_client_execute": false
+  },
+  "catalogDefinitionMatch": true,
+  "originalRowsPreserved": true,
+  "canonicalTypes": true,
+  "authenticatedWorkflowTests": "Not executed: no approved existing test identities; hosted synthetic accounts/transactions not created.",
+  "passed": true
+}
