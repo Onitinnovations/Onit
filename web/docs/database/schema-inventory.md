@@ -1,3 +1,5 @@
+> Local Increment 4 checkpoint (2026-10-27): [service orders, matching and dispatch](phase-2-increment-4-report.md) implemented; candidate 26 migrations / 126 RLS tables (51 public, 75 private). Hosted remains 22 migrations / 115 tables. No push or deployment. Increment 5 must wait for checkpoint review. Earlier progress entries below are historical.
+
 > Current hosted checkpoint (2026-10-27): Increment 3 deployed and verified on OnIt: 22 migrations, 115 RLS tables (51 public / 64 private), PostgreSQL 17.11. Canonical types updated. See [deployment report](phase-2-increment-3-hosted-deployment-report.md). Increments 4?6 remain unimplemented; earlier status entries below are historical.
 
 > Current hosted status (2026-10-26): Phase 2 Increments 1 and 2 deployed to OnIt; 17 migrations and 93 RLS tables verified. Canonical hosted types and application checks passed. Authenticated workflow HTTP tests remain outstanding. See [release checkpoint](phase-2-hosted-deployment-report.md). Earlier local-only statements below are historical.
@@ -239,3 +241,22 @@ The named checklist is fully mapped above; consolidations are proposed explicitl
 Configuration registries merge; address books merge; audit is central. Wallet history and employee assets are views. Provider bank metadata uses the shared finance registry with typed ownership. Shared approval requests/steps carry decisions, while domain approval tables are typed target/version links. Shared logistics/custody is authoritative; Laundry adds bag/count-specific details. Shared assignments control field task dispatch. Shared contract versions control campaign obligations. Separate customer/supplier invoices remain intentional because legal direction, source and access differ.
 
 Schema placement follows sensitivity, not the group title: for example public provider-owned document metadata must exclude verifier-only results; bank and payroll rows stay private. If an external projection cannot safely redact mixed rows/columns, split a dedicated projection or typed extension rather than broaden a policy. Final schema-qualified per-table assignments and exact SQL constraints must be reviewed with each migration phase.
+
+## Increment 4 requirements mapping
+
+| Requirement | Implementation |
+| --- | --- |
+| Accepted-quote orders and unique commercial linkage | service_orders; order_commercial_versions; create_service_order |
+| Payment/credit/exception and independent release gates | order_policies; order_authorizations; order_command |
+| Amendments, cancellation, holds and rescheduling | order_changes; immutable commercial versions; order_history |
+| Mandatory eligibility and explainable ranking | existing provider eligibility; dispatch_candidates; match_order/discover_order_candidates |
+| Offers, responses, expiry, overrides and escalations | dispatch_proposals; assignment_offers; dispatch_escalations; dispatch_command |
+| Multiple contractual parties and executing humans | assignment_offers per party; assignment_resources per exact human |
+| Atomic shared resources and assignment conversion | existing provider_capacity_reservations; global personnel resources; canonical locks |
+| Duplicate/stale/competing operation protection | existing transaction_commands; row/advisory locks; unique live bundle; optimistic revisions |
+| Conflict-aware schedules and release | existing eligibility calendars; order revisions; all-resource release and redispatch |
+| Tenant, branch, provider and staff boundaries | current memberships/scoped permissions; private default-deny RLS; typed projections |
+| Audit and durable operational events | order_history; existing audit_logs/operational_events/deliveries; system provenance |
+| Queues, workload, schedules, exceptions | read_order/list_order_operations; bounded keysets; existing capacity read projections |
+
+See [generated columns/constraints/indexes](phase-2-increment-4-dictionary.md) and [physical relationships](phase-2-increment-4-erd.md). No Increment 5/6 entity is claimed by this mapping.

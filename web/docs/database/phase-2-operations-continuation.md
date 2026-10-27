@@ -1,3 +1,5 @@
+> Local Increment 4 checkpoint (2026-10-27): [service orders, matching and dispatch](phase-2-increment-4-report.md) implemented; candidate 26 migrations / 126 RLS tables (51 public, 75 private). Hosted remains 22 migrations / 115 tables. No push or deployment. Increment 5 must wait for checkpoint review. Earlier progress entries below are historical.
+
 # Operational backend continuation — after the provider foundation checkpoint
 
 > Deployment update (2026-10-27): Increment 3 is committed, pushed and deployed: 22 migrations / 115 RLS tables; canonical hosted types updated. See [release evidence](phase-2-increment-3-hosted-deployment-report.md). Earlier local-only and uncommitted statements below describe the implementation checkpoint. This deployment assignment does not authorise Increment 4 deployment or begin its implementation.

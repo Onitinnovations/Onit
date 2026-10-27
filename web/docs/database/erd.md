@@ -1,3 +1,5 @@
+> Local Increment 4 checkpoint (2026-10-27): [service orders, matching and dispatch](phase-2-increment-4-report.md) implemented; candidate 26 migrations / 126 RLS tables (51 public, 75 private). Hosted remains 22 migrations / 115 tables. No push or deployment. Increment 5 must wait for checkpoint review. Earlier progress entries below are historical.
+
 > Current hosted checkpoint (2026-10-27): Increment 3 deployed and verified on OnIt: 22 migrations, 115 RLS tables (51 public / 64 private), PostgreSQL 17.11. Canonical types updated. See [deployment report](phase-2-increment-3-hosted-deployment-report.md). Increments 4?6 remain unimplemented; earlier status entries below are historical.
 
 # OnIt conceptual ERD

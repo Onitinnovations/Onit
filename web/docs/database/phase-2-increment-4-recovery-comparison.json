@@ -1,0 +1,13 @@
+{
+  "checkedAt": "2026-10-27T09:36:16.596Z",
+  "initialRestoreComparison": "Failed raw text comparison: one equivalent CHECK constraint has nested versus flat AND after pg_dump/restore.",
+  "normalization": "Only the two exact known provider_work_schedules_weekdays_check strings are equivalent; every other definition remains compared exactly.",
+  "nested": "(private,provider_work_schedules,provider_work_schedules_weekdays_check,\"CHECK ((((cardinality(weekdays) >= 1) AND (cardinality(weekdays) <= 7)) AND (weekdays <@ ARRAY[(1)::smallint, (2)::smallint, (3)::smallint, (4)::smallint, (5)::smallint, (6)::smallint, (7)::smallint])))\")",
+  "flat": "(private,provider_work_schedules,provider_work_schedules_weekdays_check,\"CHECK (((cardinality(weekdays) >= 1) AND (cardinality(weekdays) <= 7) AND (weekdays <@ ARRAY[(1)::smallint, (2)::smallint, (3)::smallint, (4)::smallint, (5)::smallint, (6)::smallint, (7)::smallint])))\")",
+  "negativeGuards": 2,
+  "truthTable": {
+    "cases": 113,
+    "equivalent": true
+  },
+  "passed": true
+}

@@ -50,7 +50,7 @@ try{
   const [hash,file]=entry.split(/\s+/,2);
   if(createHash('sha256').update(readFileSync(file)).digest('hex')!==hash)throw new Error('Deployed Increment 1/2 migration changed: '+file);
  }
- for(const file of readdirSync('supabase/migrations').filter(f=>f.endsWith('.sql')).sort()){
+ for(const file of readdirSync('supabase/migrations').filter(f=>f.endsWith('.sql')&&f<'20261027000000').sort()){
   const contents=readFileSync('supabase/migrations/'+file);
   report.migrationHashes[file]=createHash('sha256').update(contents).digest('hex');
   sql(contents.toString('utf8'));report.migrations.push(file);console.log('PASS migration',file);
@@ -72,7 +72,7 @@ try{
  if(security.tables!==115||security.tables_without_rls||security.public_definers||security.unsafe_search_paths||security.public_internal_execute||security.private_anon_usage||security.private_authenticated_usage||security.client_transaction_writes||security.client_worker_execute||security.anonymous_provider_execute)throw new Error('Candidate catalog security gate failed.');
  console.log('PASS candidate catalog: 115 RLS tables; private schemas, definers and client write grants secured.');
  const fixture=readFileSync('supabase/fixtures/catalogue-development.sql','utf8');
- for(const file of readdirSync('supabase/tests').filter(f=>f.endsWith('.sql')).sort()){
+ for(const file of readdirSync('supabase/tests').filter(f=>f.endsWith('.sql')&&f<'007').sort()){
   let source=readFileSync('supabase/tests/'+file,'utf8');
   // Keep the final synthetic fixture only in this newly-created local database
   // so separate connections can exercise real locking after SQL assertions.
@@ -86,7 +86,7 @@ try{
  const {testProviderConcurrency}=await import('./test-provider-concurrency.mjs');
  report.providerConcurrency=await testProviderConcurrency({bin,env,database,sql});
  const {testPricingUpgrade}=await import('./test-pricing-upgrade.mjs');
- report.upgrade=testPricingUpgrade({run,env,archive,listPath});
+ report.upgrade=testPricingUpgrade({run,env,archive,listPath,maxMigration:'20261027000000'});
  report.passed=true;
  writeFileSync('docs/database/phase-2-operations-candidate.sha256',Object.entries(report.migrationHashes).map(([file,hash])=>`${hash}  supabase/migrations/${file}`).join('\n')+'\n');
 }catch(error){report.error=error.message;console.error(error.message);process.exitCode=1;}
