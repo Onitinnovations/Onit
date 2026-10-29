@@ -51,7 +51,7 @@ try{
   const [hash,file]=entry.split(/\s+/,2);
   if(createHash('sha256').update(readFileSync(file)).digest('hex')!==hash)throw new Error('Deployed Increment 1/2 migration changed: '+file);
  }
- for(const file of readdirSync('supabase/migrations').filter(f=>f.endsWith('.sql')).sort()){
+ for(const file of readdirSync('supabase/migrations').filter(f=>f.endsWith('.sql')&&f<'20261028000000').sort()){
   const contents=readFileSync('supabase/migrations/'+file);
   report.migrationHashes[file]=createHash('sha256').update(contents).digest('hex');
   sql(contents.toString('utf8'));report.migrations.push(file);console.log('PASS migration',file);
@@ -74,7 +74,7 @@ try{
  if(security.tables!==126||security.tables_without_rls||security.public_definers||security.unsafe_search_paths||security.public_internal_execute||security.private_anon_usage||security.private_authenticated_usage||security.client_transaction_writes||security.client_worker_execute||security.anonymous_provider_execute||security.client_expiry_execute)throw new Error('Candidate catalog security gate failed.');
  console.log('PASS candidate catalog: 126 RLS tables; private schemas, definers and client write grants secured.');
  const fixture=readFileSync('supabase/fixtures/catalogue-development.sql','utf8');
- for(const file of readdirSync('supabase/tests').filter(f=>f.endsWith('.sql')).sort()){
+ for(const file of readdirSync('supabase/tests').filter(f=>f.endsWith('.sql')&&f<'008').sort()){
   let source=readFileSync('supabase/tests/'+file,'utf8');
   // Keep the final synthetic fixture only in this newly-created local database
   // so separate connections can exercise real locking after SQL assertions.
@@ -90,9 +90,9 @@ try{
  const {testOrderConcurrency}=await import('./test-order-concurrency.mjs');
  report.orderConcurrency=await testOrderConcurrency({bin,env,database,sql});
  const {testPricingUpgrade}=await import('./test-pricing-upgrade.mjs');
- report.upgrade=testPricingUpgrade({run,env,archive,listPath});
+ report.upgrade=testPricingUpgrade({run,env,archive,listPath,maxMigration:'20261028000000'});
  const {testOrderUpgrade}=await import('./test-order-upgrade.mjs');
- report.providerUpgrade=testOrderUpgrade({run,env,archive,listPath});
+ report.providerUpgrade=testOrderUpgrade({run,env,archive,listPath,maxMigration:'20261028000000'});
  for(const [file,hash] of Object.entries(report.migrationHashes))if(createHash('sha256').update(readFileSync('supabase/migrations/'+file)).digest('hex')!==hash)throw Error('Candidate changed during validation; rerun the exact final files.');
  report.passed=true;
  writeFileSync('docs/database/phase-2-orders-candidate.sha256',Object.entries(report.migrationHashes).map(([file,hash])=>`${hash}  supabase/migrations/${file}`).join('\n')+'\n');

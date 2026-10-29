@@ -22,7 +22,11 @@
     "db:test:operations": "node scripts/database/test-operations-native.mjs",
     "db:types:operations": "node scripts/database/generate-operations-types.mjs",
     "db:test:orders": "node scripts/database/test-orders-native.mjs",
-    "db:types:orders": "node scripts/database/generate-orders-types.mjs"
+    "db:types:orders": "node scripts/database/generate-orders-types.mjs",
+    "db:test:fulfilment": "node scripts/database/test-fulfilment-native.mjs",
+    "db:types:fulfilment": "node scripts/database/generate-fulfilment-types.mjs",
+    "db:test:specialized": "node scripts/database/test-specialized-native.mjs",
+    "db:types:specialized": "node scripts/database/generate-specialized-types.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.117.3",

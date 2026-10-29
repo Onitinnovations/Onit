@@ -1,0 +1,30 @@
+import {writeFile} from 'node:fs/promises';
+const descriptions={fulfilment_policies:'Independent versioned execution, checklist and SLA configuration.',work_orders:'Confirmed-bundle work scope and supervision.',work_tasks:'Assigned personnel tasks, dependencies, rounds and schedules.',task_dependencies:'Same-work acyclic task dependencies.',execution_history:'Append-only actor, system provenance, revisions and snapshots.',execution_attendance:'Declared attendance and separate independent acknowledgements.',execution_evidence:'Private account-consistent registry linkage and independent review.',execution_submissions:'Existing checklist definitions and versioned answers.',quality_inspections:'Independent scheduled inspection and retained outcome.',quality_findings:'Immutable evidenced defects and corrective requirements.',rework_requests:'Original defect, corrective task and retained resolution.',service_cases:'Restricted customer or operational case lifecycle.',service_case_entries:'Append-only investigation and communication evidence.',customer_confirmations:'Current-plan customer decision and sign-off.',operational_exceptions:'Independent revision-bound operational exceptions.',sla_tracks:'Explicit due times, pauses and immutable breach event linkage.'};
+Object.assign(descriptions,{service_checklists:'Reused independently published execution/quality checklist versions; assessment semantics preserved.',service_checklist_items:'Reused fields with typed answers, choices, validation, conditions and evidence requirements.',customer_feedback:'Reused customer feedback with append-only linked work revision chains.',service_orders:'Existing order gains controlled execution and closure states.',assignment_resources:'Existing dispatch resource history gains substitution version identity.',provider_performance_events:'Existing immutable observations accept unique verified execution source events.'});
+const publicTables=new Set(['service_checklists','service_checklist_items','customer_feedback']);
+const immutable=new Set(['execution_history','execution_attendance','task_dependencies','quality_findings','customer_confirmations','service_case_entries','assignment_resources','provider_performance_events']);
+const esc=value=>String(value??'').replaceAll('|','\\|').replaceAll('\n',' ');
+export async function writeFulfilmentDictionary(db,root){
+ let md='# Increment 5 fulfilment dictionary — local candidate\n\nGenerated from the successfully replayed PostgreSQL 17 catalog. The 16 new tables are in unexposed `private`, have RLS enabled, no anon/authenticated table grants and no permissive table policies. Access uses authorised projections/commands; see the [checkpoint report](phase-2-increment-5-report.md). Six reused tables are also documented; existing public feedback access retains its original RLS. No data rows or worker tokens are exported. All historical and financial references use ON DELETE RESTRICT.\n\n';
+ const names=Object.keys(descriptions);
+ let erd='# Service Fulfilment — physical FK graph\n\nLocal candidate. Actor/creator references are documented in the dictionary but omitted from this graph. Existing provider, human resource, quotation and customer references are reused.\n\n```mermaid\nflowchart LR\n';
+ for(const name of names){
+  const schema=publicTables.has(name)?'public':'private';
+  const table=(await db.query(`select c.oid::int as oid,c.relrowsecurity as rls from pg_class c join pg_namespace n on n.oid=c.relnamespace where n.nspname='${schema}' and c.relname='${name}'`)).rows[0];
+  if(!table?.rls)throw Error('Provider dictionary requires all expected RLS tables');
+  const columns=(await db.query(`select a.attname as name,format_type(a.atttypid,a.atttypmod) as type,a.attnotnull as required,pg_get_expr(d.adbin,d.adrelid) as default_value from pg_attribute a left join pg_attrdef d on d.adrelid=a.attrelid and d.adnum=a.attnum where a.attrelid=${table.oid} and a.attnum>0 and not a.attisdropped order by a.attnum`)).rows;
+  const constraints=(await db.query(`select conname as name,contype as type,pg_get_constraintdef(oid) as definition from pg_constraint where conrelid=${table.oid} order by conname`)).rows;
+  const indexes=(await db.query(`select indexdef as definition from pg_indexes where schemaname='${schema}' and tablename='${name}' order by indexname`)).rows;
+  const foreign=(await db.query(`select n.nspname as parent_schema,c.relname as parent from pg_constraint k join pg_class c on c.oid=k.confrelid join pg_namespace n on n.oid=c.relnamespace where k.conrelid=${table.oid} and k.contype='f'`)).rows;
+  md+=`## ${schema}.${name}\n\n${descriptions[name]}\n\nOwner: ${name.startsWith('operational_')?'OnIt platform operations':'OnIt service operations'}. Lifecycle: ${immutable.has(name)?'append-only; mutation/deletion rejected by trigger':publicTables.has(name)?'retained; existing public RLS is preserved; work-linked feedback and execution standards use guarded commands':'retained; command-controlled lifecycle and audit; no ordinary client writes'}. RLS: enabled; privileged server maintenance remains trusted.\n\n| Column | Type | Required | Default |\n| --- | --- | --- | --- |\n`;
+  for(const c of columns)md+=`| ${esc(c.name)} | ${esc(c.type)} | ${c.required?'yes':'no'} | ${esc(c.default_value)} |\n`;
+  md+='\nConstraints (including FKs, unique and CHECK):\n\n';for(const c of constraints)md+=`- ${esc(c.name)}: ${esc(c.definition)}\n`;
+  md+='\nIndexes:\n\n';for(const i of indexes)md+=`- ${esc(i.definition)}\n`;
+  md+='\n';erd+=`    ${schema}_${name}["${schema}.${name}"]\n`;
+  for(const f of foreign)if(f.parent!=='profiles')erd+=`    ${schema}_${name} --> ${f.parent_schema}_${f.parent}["${f.parent_schema}.${f.parent}"]\n`;
+ }
+ erd+='```\n';
+ await writeFile(root+'/docs/database/phase-2-increment-5-dictionary.md',md.trimEnd()+'\n');
+ await writeFile(root+'/docs/database/phase-2-increment-5-erd.md',erd.trimEnd()+'\n');
+ console.log('Generated fulfilment dictionary and FK graph from 16 new and six reused RLS tables.');
+}

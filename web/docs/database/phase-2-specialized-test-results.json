@@ -1,0 +1,322 @@
+{
+  "startedAt": "2026-10-29T19:26:48.269Z",
+  "migrations": [
+    "20261024000100_identity_access.sql",
+    "20261024000200_geography_customers.sql",
+    "20261024000300_service_catalogue.sql",
+    "20261024000400_approvals_documents.sql",
+    "20261024000500_foundation_commands.sql",
+    "20261024000600_configuration_integrity.sql",
+    "20261024000700_geography_pricing_lifecycle.sql",
+    "20261024000800_versioned_booking_forms.sql",
+    "20261024000900_corporate_branch_billing_foundation.sql",
+    "20261024001000_phase_one_integrity.sql",
+    "20261024001100_scoped_staff_access.sql",
+    "20261024001200_corporate_approval_configuration.sql",
+    "20261025000100_service_requests.sql",
+    "20261025000200_quotation_workflow.sql",
+    "20261025000300_pricing_configuration.sql",
+    "20261025000400_assessment_workflow.sql",
+    "20261025000500_pricing_quotation_engine.sql",
+    "20261026000100_provider_network.sql",
+    "20261026000200_provider_commands.sql",
+    "20261026000300_provider_eligibility.sql",
+    "20261026000400_provider_reads_events.sql",
+    "20261026000500_personnel_resources.sql",
+    "20261027000100_order_dispatch_foundation.sql",
+    "20261027000200_order_commands.sql",
+    "20261027000300_dispatch_commands.sql",
+    "20261027000400_order_reads_integrity.sql",
+    "20261028000100_fulfilment_foundation.sql",
+    "20261028000200_execution_configuration_access.sql",
+    "20261028000300_execution_commands.sql",
+    "20261028000400_quality_closure_cases.sql",
+    "20261028000500_cases_sla_integrations.sql",
+    "20261028000600_execution_reads_storage_integrity.sql",
+    "20261029000100_specialized_operations_foundation.sql",
+    "20261029000200_specialized_authority.sql",
+    "20261029000300_laundry_commands.sql",
+    "20261029000400_operation_commands_reads.sql",
+    "20261029000500_specialized_integrity.sql",
+    "20261029000600_construction_commands.sql",
+    "20261029000700_procurement_sourcing.sql",
+    "20261029000800_procurement_receiving.sql",
+    "20261029000900_procurement_reads_integrity.sql",
+    "20261029001000_field_campaigns.sql",
+    "20261029001100_specialized_projections_security.sql",
+    "20261029001200_construction_commercial_replanning.sql",
+    "20261029001300_specialized_tenant_integrity.sql",
+    "20261029001400_mandatory_specialized_execution.sql",
+    "20261029001500_supplier_document_preparation.sql",
+    "20261029001600_supplier_independence_excess_goods.sql"
+  ],
+  "migrationHashes": {
+    "20261024000100_identity_access.sql": "dbc534dbd5107da0c0d185a9cf1d58b2c1e52dcdb42bb2a6347f0327ae070cfa",
+    "20261024000200_geography_customers.sql": "8f10586314334a0fe1f0236ce231935681104c47c0057f965bc56eaf8664cd6d",
+    "20261024000300_service_catalogue.sql": "1aa6cbd07bfb9deee653ce835d40184139ee9d0cd998903c3ced0f32c7c19c04",
+    "20261024000400_approvals_documents.sql": "11e198620cf7f48091c8d90a2f7669768e46e2e195d1ae7219bc542f223d4ca0",
+    "20261024000500_foundation_commands.sql": "78e194a3dbdc4bbc343023eee7db115c386290aa94b524c2a48caec589efbf0c",
+    "20261024000600_configuration_integrity.sql": "2b1bca1b2618f3dd7e6655fe545042f3ffd19a638c7c434ece581aff7f1257ff",
+    "20261024000700_geography_pricing_lifecycle.sql": "0a26b5c8daf4e17c1907058a29fc7db84b605f95ecb2d932268d0da2b4e9154c",
+    "20261024000800_versioned_booking_forms.sql": "3fe63fd70943e6949465ab1d88e61f154166da4fcaf8cabd6c912c97fc81c1bc",
+    "20261024000900_corporate_branch_billing_foundation.sql": "07fdb90aeec0c479b73c897b1051f2798a16b2bcb7a6bc5716025d951bbf0958",
+    "20261024001000_phase_one_integrity.sql": "969b3df9d4a48324acdcc8e68099803a1a83764f66445be9cd732167849a0da4",
+    "20261024001100_scoped_staff_access.sql": "bf0fc8187ecf0aaf34356ae7062fb5ee6b2eb0b60690b62b40031eb4bcff4f16",
+    "20261024001200_corporate_approval_configuration.sql": "021920fbf3b303e1f287ac53007b8a5a7a66be45ea271685cfed3cbeb8c1e19e",
+    "20261025000100_service_requests.sql": "4391568b43a0795ba03043ec28fc61035247ef252fbd633b6aa77e7519af22bb",
+    "20261025000200_quotation_workflow.sql": "9d0500512001c38fcb6dacf00e008e7fbb6574bed288d2156b16923a4c95e438",
+    "20261025000300_pricing_configuration.sql": "de6dfdc8ecf24872d630d1d716cf618d24a05b87f4aba7c3a1060604580ca8fa",
+    "20261025000400_assessment_workflow.sql": "1d0cc9685084e2b3e8cbe3dee90c7973675a25c1d316845cb9cee9abc2f4ecdd",
+    "20261025000500_pricing_quotation_engine.sql": "f385852b1b328b2f2b7eb3c6659da62d12380f3d5375db2244675b4b2f089cf3",
+    "20261026000100_provider_network.sql": "d357bbc4b531fea61c25849654f804e70b8a783d50948b9a200d581317bd0124",
+    "20261026000200_provider_commands.sql": "7b1bb191be523ad6b15dcfaf1e31dcd641ec83309ab58e033c427fd7dad84238",
+    "20261026000300_provider_eligibility.sql": "cd473d3de3c7264acf15cd4f20504ad8db4dd73120db1dc321c496b1b4dd311c",
+    "20261026000400_provider_reads_events.sql": "a9a8b0d5ef047e9e360a29528d5b45ed734c557f8a823e3b9c6172eaea12a168",
+    "20261026000500_personnel_resources.sql": "7bc8f57372c18ad8f20c4a12258c53b746a563059497fa3477dc1a34759a5bed",
+    "20261027000100_order_dispatch_foundation.sql": "5f5e6704c297752cc57f9b6290c008358310d40553a90883539a4c669926c9ba",
+    "20261027000200_order_commands.sql": "be215df342382ed81cf47008c90aa8557e8b23ba3162de6458220cacfc6f67c7",
+    "20261027000300_dispatch_commands.sql": "c25f94dd807d75375c0e8e47ea21e3bb7ec8a811daa45515f0fdd78d407bb675",
+    "20261027000400_order_reads_integrity.sql": "1a587e8d7dc53ae6ffa1b049626063b91ac6c6710f9bf2dc1778e95918b055fd",
+    "20261028000100_fulfilment_foundation.sql": "10310c2078fc430f15ee5b05087a9091ee8f61480c4c1870cd2832fcd5663cd3",
+    "20261028000200_execution_configuration_access.sql": "e12e3e8d8d2853491fe2ed0a971e225866d4ea5080c22a9c7d85e7590cbf9387",
+    "20261028000300_execution_commands.sql": "146d936cdbc4310b0e6497f16ade2575ea09e65454723e920c047eb1f476dc7f",
+    "20261028000400_quality_closure_cases.sql": "0df39492e3afdb3c0d3e90805b9b751d55298bd55adb1b7facb6f864344cd9a7",
+    "20261028000500_cases_sla_integrations.sql": "021d14e855ba3f654cdc1c2c4208bdb13374fd43c23ded7511251d382966d5b2",
+    "20261028000600_execution_reads_storage_integrity.sql": "0efa14e2c8e07f85f519890f37ef7d795be50a539f3ba7ab47ffba38a8c9522e",
+    "20261029000100_specialized_operations_foundation.sql": "0455179530932927c621d78eba994233d05f43cd3224e3d244664385b6fba3ef",
+    "20261029000200_specialized_authority.sql": "515b2fa653bfb445286ec0020583adcd77e5f0e8ac34c4fcebafc34b212ebfac",
+    "20261029000300_laundry_commands.sql": "f5dfcf1da813316208003dbe01055562ed4a77cf42c8a288a3e06a9d36c24b10",
+    "20261029000400_operation_commands_reads.sql": "f291d1762d4c382687dbae8e8b6e512d8c20dff6556832aaa121e5dd7de6a63d",
+    "20261029000500_specialized_integrity.sql": "bed9164ddfe046a7aed8342767af9c3cad6c224884c55c714d331ea5e834ab69",
+    "20261029000600_construction_commands.sql": "add0160b5b1237378116aad4fa51122e046e864b8cb59721e1aa1f27761963c2",
+    "20261029000700_procurement_sourcing.sql": "83f9d8b1c49806e4bdaa9276e2bddb2eeee77aba2eb6e154fd11016e494e7ada",
+    "20261029000800_procurement_receiving.sql": "0771814637b3546fa3787c5b6d650aaba748fdcf91e1d24a1141e2c294a1cc24",
+    "20261029000900_procurement_reads_integrity.sql": "72ef181a1cc0a725334519ea20119dbd9d0e90f4365141f4efc83c22b4a0924f",
+    "20261029001000_field_campaigns.sql": "d0c28de57ce50eed5c9a1a1715de531394e0a4bfa594ff649a914ef3f65bf073",
+    "20261029001100_specialized_projections_security.sql": "292421b9e11c7d6ae809e10245ec93811123a10c33e7ba5b517828d410516f5b",
+    "20261029001200_construction_commercial_replanning.sql": "0cb351ba1b5a0293bb2620dfdd35bff7fd7171b03c490e95769b588cea8b07ac",
+    "20261029001300_specialized_tenant_integrity.sql": "e91657531bbfe82a733c5a1389956ce866dd5cb7b17c1f958b0652b7f25c4aae",
+    "20261029001400_mandatory_specialized_execution.sql": "2f6b852e2b46ac8e10acafeff5f4cd126fb03aafa7b175f268a67af148ad4a7b",
+    "20261029001500_supplier_document_preparation.sql": "77851b5392ba6b8cda5c38c8b65a3cd8e72efcd4a8aef80a06905391f6ff8c96",
+    "20261029001600_supplier_independence_excess_goods.sql": "f46cb79d98b7ac89935eedae84debacda279d4516e4546eb4e6aa9e7daf11c18"
+  },
+  "tests": [
+    {
+      "file": "001_foundation.sql",
+      "assertions": 76,
+      "passed": true
+    },
+    {
+      "file": "002_phase_one_refinements.sql",
+      "assertions": 50,
+      "passed": true
+    },
+    {
+      "file": "003_service_transactions.sql",
+      "assertions": 64,
+      "passed": true
+    },
+    {
+      "file": "004_pricing_assessments.sql",
+      "assertions": 71,
+      "passed": true
+    },
+    {
+      "file": "005_provider_network.sql",
+      "assertions": 82,
+      "passed": true
+    },
+    {
+      "file": "006_personnel_resources.sql",
+      "assertions": 20,
+      "passed": true
+    },
+    {
+      "file": "007_orders_dispatch.sql",
+      "assertions": 55,
+      "passed": true
+    },
+    {
+      "file": "008_service_fulfilment.sql",
+      "assertions": 30,
+      "passed": true
+    },
+    {
+      "file": "009_execution_security_sla.sql",
+      "assertions": 18,
+      "passed": true
+    },
+    {
+      "file": "010_execution_configuration.sql",
+      "assertions": 23,
+      "passed": true
+    },
+    {
+      "file": "011_execution_corporate_isolation.sql",
+      "assertions": 4,
+      "passed": true
+    },
+    {
+      "file": "specialized/laundry.sql",
+      "assertions": 26,
+      "passed": true
+    },
+    {
+      "file": "specialized/construction.sql",
+      "assertions": 15,
+      "passed": true
+    },
+    {
+      "file": "specialized/procurement.sql",
+      "assertions": 28,
+      "passed": true
+    },
+    {
+      "file": "specialized/field.sql",
+      "assertions": 15,
+      "passed": true
+    }
+  ],
+  "hostedWrites": false,
+  "checkpoint": "combined-fulfilment-specialized",
+  "postgres": "17.11",
+  "testHashes": {
+    "supabase/tests/001_foundation.sql": "1006ae9ae24ad6c04559126eee24fdeeb76830046287a734697dd8f86082ada0",
+    "supabase/tests/002_phase_one_refinements.sql": "92fd747bd96f973dd7936cbf97f86e664a0959c6cd3d7dcf1813827fe84e0d2f",
+    "supabase/tests/003_service_transactions.sql": "1653732b66b37c60c0cec0a466f975e6da3cfe862950eceb5e8e7059a2b1e66c",
+    "supabase/tests/004_pricing_assessments.sql": "7f13ea58fa8b61f46ee305c80d88040a2154796b18741ea25b00121b234bc263",
+    "supabase/tests/005_provider_network.sql": "c2a4af086b0cd85c8074cee91a04320609cde563904f1f0a6517456295bedcf0",
+    "supabase/tests/006_personnel_resources.sql": "5a1be503ce87d02556ed2a51cff2183e16015328d91c220751a3f6662a620e01",
+    "supabase/tests/007_orders_dispatch.sql": "162fc109b767f8ae27976fe486f86f5a0b8ed85852c68c002119f0bf4934b02e",
+    "supabase/tests/008_service_fulfilment.sql": "95cc2eed07df75c47a1e5f2cfc5d68b7fc919c622026b9066e25b93aa0eb36fd",
+    "supabase/tests/009_execution_security_sla.sql": "12d19f934d7b762d5bec3bf50b553994b9b816977dcc18537c6b0a266319e8f2",
+    "supabase/tests/010_execution_configuration.sql": "309741352620e707ed861c6c42097335a1aa27dd6a56584cc3f57e4f7f0a7757",
+    "supabase/tests/011_execution_corporate_isolation.sql": "080320cf5ab94924729b151d5323b39cb09f0f00aedc444e9e3e67e37d48f1c8",
+    "supabase/tests/specialized/laundry.sql": "e67252e5299c0db967e44ce247f02eeeb86c4baf7251875200a20570c0c7fc9e",
+    "supabase/tests/specialized/construction.sql": "55b928b9ff3f1a4b3dd2c5ddbf665afe3cbc60f23304a8126c656c86432b883b",
+    "supabase/tests/specialized/procurement.sql": "f6bb7e88d2d597ffb285d496158459f23b4c1e68d252e8b8f2fb47040b2fa935",
+    "supabase/tests/specialized/field.sql": "16bd3dd870d656439f1346a42db62686ecaed7028f6c0d53861f93f41152c49e",
+    "supabase/fixtures/specialized/execution-test-helpers.sql": "2b24e222da9c361500a15c34fa59ee04e191f2b730af9e651eaca160cea49167"
+  },
+  "database": "onit_phase2_1793302008287",
+  "security": {
+    "tables": 180,
+    "tables_without_rls": 0,
+    "client_private_grants": 0,
+    "anonymous_specialized_execute": false,
+    "client_sla_worker_execute": false,
+    "public_definers": 0,
+    "unsafe_search_paths": 0,
+    "public_internal_execute": 0,
+    "private_anon_usage": false,
+    "private_authenticated_usage": false,
+    "client_worker_execute": false,
+    "client_expiry_execute": false,
+    "anonymous_provider_execute": false,
+    "client_transaction_writes": 0
+  },
+  "concurrency": {
+    "passed": true,
+    "checks": [
+      "two simultaneous creates return one UUID",
+      "two simultaneous amendments produce one winner",
+      "one idempotency row",
+      "two simultaneous quotation revisions preserve both versions and one live proposal"
+    ],
+    "connections": 10
+  },
+  "providerConcurrency": {
+    "checks": 7,
+    "connections": 13,
+    "capacityWinners": 1,
+    "idempotencyReceipts": 1,
+    "revisionWinners": 1,
+    "workerLeases": 10,
+    "crossBusinessHumanWinners": 1
+  },
+  "orderConcurrency": {
+    "checks": 11,
+    "connections": 30,
+    "duplicateOrders": 1,
+    "multiPersonAllocationWinners": 1,
+    "responseWinners": 1,
+    "assignmentWinners": 1,
+    "realExpirySeconds": 31,
+    "systemExpiryReceipts": 1
+  },
+  "fulfilmentConcurrency": {
+    "checks": 13,
+    "connections": 27,
+    "realOverlap": true,
+    "failedSubstitutionPreservedResources": true,
+    "cancellationReleasedResources": true,
+    "independentSlaExtension": true,
+    "suspensionDeadlineControl": true,
+    "successfulTaskReassignment": true,
+    "formerPersonnelAccessRevoked": true
+  },
+  "laundryConcurrency": {
+    "passed": true,
+    "checks": 8,
+    "connections": 14,
+    "quantityWinners": 1,
+    "acknowledgementWinners": 1,
+    "exactGoodsCount": 8,
+    "database": "onit_specialized_focus_1793302351396"
+  },
+  "specializedConcurrency": {
+    "passed": true,
+    "databases": {
+      "construction": "onit_specialized_focus_1793302378793",
+      "procurement": "onit_specialized_focus_1793302407477",
+      "field": "onit_specialized_focus_1793302431265"
+    },
+    "checks": 10,
+    "connections": 10,
+    "milestoneWinners": 1,
+    "receiptWinners": 1,
+    "submissionWinners": 1,
+    "reviewWinners": 1
+  },
+  "upgrade": {
+    "passed": true,
+    "database": "onit_upgrade_1793302459460",
+    "acceptedVersions": 1,
+    "acceptedLines": 1,
+    "requests": 3,
+    "checks": 6
+  },
+  "providerUpgrade": {
+    "passed": true,
+    "database": "onit_order_upgrade_1793302478480",
+    "checks": 4,
+    "preservedTables": [
+      "provider_profiles",
+      "provider_personnel",
+      "provider_capacity_reservations",
+      "provider_history",
+      "operational_events",
+      "operational_event_deliveries"
+    ],
+    "liveReservationsPreserved": 1
+  },
+  "orderUpgrade": {
+    "passed": true,
+    "database": "onit_execution_upgrade_1793302510408",
+    "checks": 3,
+    "tablesCompared": 126,
+    "originalRowsCompared": 1777,
+    "tablesAfter": 180
+  },
+  "fulfilmentUpgrade": {
+    "passed": true,
+    "database": "onit_specialized_upgrade_1793302548315",
+    "checks": 4,
+    "definitionMatch": true,
+    "tablesCompared": 142,
+    "originalRowsCompared": 3688,
+    "tablesAfter": 180
+  },
+  "passed": true,
+  "completedAt": "2026-10-29T19:36:22.372Z"
+}

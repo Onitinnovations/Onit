@@ -1,0 +1,16 @@
+{
+  "checkedAt": "2026-10-27T19:11:01.429Z",
+  "database": "onit_specialized_draft_1793128255564",
+  "postgres": "17.11",
+  "draftOnly": true,
+  "hostedWrites": false,
+  "ddlReplay": true,
+  "workflowsImplemented": false,
+  "releaseReady": false,
+  "catalog": {
+    "tables": 177,
+    "missing_rls": 0,
+    "private_client_grants": 0
+  },
+  "foundationTables": 35
+}

@@ -1,0 +1,40 @@
+{
+  "stage": "construction",
+  "database": "onit_specialized_focus_1793134208885",
+  "startedAt": "2026-10-27T20:50:08.892Z",
+  "postgres": "17.11",
+  "focusedOnly": true,
+  "hostedWrites": false,
+  "migrations": [
+    "20261029000100_specialized_operations_foundation.sql",
+    "20261029000200_specialized_authority.sql",
+    "20261029000300_laundry_commands.sql",
+    "20261029000400_operation_commands_reads.sql",
+    "20261029000500_specialized_integrity.sql",
+    "20261029000600_construction_commands.sql",
+    "20261029000700_procurement_sourcing.sql",
+    "20261029000800_procurement_receiving.sql",
+    "20261029000900_procurement_reads_integrity.sql",
+    "20261029001000_field_campaigns.sql",
+    "20261029001100_specialized_projections_security.sql",
+    "20261029001200_construction_commercial_replanning.sql"
+  ],
+  "sourceHashes": {
+    "supabase/drafts/increment6/20261029000100_specialized_operations_foundation.sql": "0455179530932927c621d78eba994233d05f43cd3224e3d244664385b6fba3ef",
+    "supabase/drafts/increment6/20261029000200_specialized_authority.sql": "515b2fa653bfb445286ec0020583adcd77e5f0e8ac34c4fcebafc34b212ebfac",
+    "supabase/drafts/increment6/20261029000300_laundry_commands.sql": "f5dfcf1da813316208003dbe01055562ed4a77cf42c8a288a3e06a9d36c24b10",
+    "supabase/drafts/increment6/20261029000400_operation_commands_reads.sql": "f291d1762d4c382687dbae8e8b6e512d8c20dff6556832aaa121e5dd7de6a63d",
+    "supabase/drafts/increment6/20261029000500_specialized_integrity.sql": "bed9164ddfe046a7aed8342767af9c3cad6c224884c55c714d331ea5e834ab69",
+    "supabase/drafts/increment6/20261029000600_construction_commands.sql": "add0160b5b1237378116aad4fa51122e046e864b8cb59721e1aa1f27761963c2",
+    "supabase/drafts/increment6/20261029000700_procurement_sourcing.sql": "5cb221ee4ceaab4e45e9e9aea09761b247eb6545be516775915b270fcff1373c",
+    "supabase/drafts/increment6/20261029000800_procurement_receiving.sql": "0771814637b3546fa3787c5b6d650aaba748fdcf91e1d24a1141e2c294a1cc24",
+    "supabase/drafts/increment6/20261029000900_procurement_reads_integrity.sql": "72ef181a1cc0a725334519ea20119dbd9d0e90f4365141f4efc83c22b4a0924f",
+    "supabase/drafts/increment6/20261029001000_field_campaigns.sql": "af2d25ae7f34d310220fa681a495d68ff8cc634502ecc65400ea2b09a20c113d",
+    "supabase/drafts/increment6/20261029001100_specialized_projections_security.sql": "b7dfca21bf4bdb8f876dfc061e9e208f0b601bb8800f40fb27662764a4d6a443",
+    "supabase/drafts/increment6/20261029001200_construction_commercial_replanning.sql": "0cb351ba1b5a0293bb2620dfdd35bff7fd7171b03c490e95769b588cea8b07ac",
+    "supabase/tests/specialized/construction.sql": "1a9c369f59f412a6b29550b55bef73c1cbcfd75aced2ce68deda6720cb056fe2"
+  },
+  "assertions": 15,
+  "passed": true,
+  "completedAt": "2026-10-27T20:50:36.379Z"
+}

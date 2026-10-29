@@ -22,11 +22,11 @@ export type MatchInput = { provider_id: string; worker_id: string; units: string
 export type Candidate = { id: string; provider_id: string; worker_id: string; score: string; decision: { eligible: boolean; reasons: { code: string }[] } };
 export type OrderProjection = {
   id: string; reference: string; revision: number;
-  status: 'awaiting_confirmation' | 'confirmed' | 'assigned' | 'on_hold' | 'cancelled';
+  status: 'awaiting_confirmation' | 'confirmed' | 'assigned' | 'on_hold' | 'cancelled' | 'in_progress' | 'awaiting_qa' | 'awaiting_customer_confirmation' | 'customer_disputed' | 'completed' | 'closed';
   service_version_id: string; start: string; end: string;
   customer_account_id?: string; request_id?: string; branch_id?: string | null;
   commercial?: { id: string; currency: string; total: string; terms: string; lines: Json[] };
-  internal_status?: 'pending_authorization' | 'awaiting_dispatch' | 'assigned' | 'on_hold' | 'cancelled';
+  internal_status?: 'pending_authorization' | 'awaiting_dispatch' | 'assigned' | 'on_hold' | 'cancelled' | 'in_progress' | 'awaiting_qa' | 'awaiting_customer_confirmation' | 'customer_disputed' | 'completed' | 'closed';
   commercial_gate?: boolean;
   authorizations?: { id: string; kind: 'payment_evidence' | 'corporate_credit' | 'exception'; status: string; order_revision: number; amount: string; currency_id: string; valid_until: string; document_id?: string; reference?: string; reason?: string; created_by?: string; decided_by?: string | null }[];
   offers?: { id: string; provider_id: string; proposal_id: string; status: string; proposal_status: string; expires_at: string; override_reason: string | null; override_by: string | null; proposed_by: string | null; resources: { worker_id: string; units: string; status: string }[] }[];

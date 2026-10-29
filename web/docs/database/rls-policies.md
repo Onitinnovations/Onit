@@ -1,3 +1,25 @@
+> Increments 5–6 current security evidence: [consolidated report](phase-2-increments-5-6-report.md). All 180 candidate tables have RLS; 38 specialised private tables use deny-by-default ordinary grants, independent approvals and scoped projections. Supplier portal access is organisation-bound, field reports are branch-filtered, and Storage access is limited to exact current linked references. Signed-in HTTP integration remains outstanding. Earlier sections describe their original checkpoints.
+
+# Increment 5 local security extension
+
+The local candidate has 142 RLS tables; hosted remains at the verified 126-table Increment 4 baseline. The sixteen new tables are in unexposed `private`, with no ordinary client table access. See the [fulfilment report](phase-2-increment-5-report.md) and [catalog dictionary](phase-2-increment-5-dictionary.md). The Phase 1 guide below remains the historical foundation.
+
+| Actor | Fulfilment boundary |
+| --- | --- |
+| Customer/current corporate member | Account, branch and department-scoped customer projection; internal work staffing, commercial calculations and investigations omitted. |
+| Customer approver | Current scoped `can_approve` authority for plan-specific confirmation/dispute and completed-work feedback. Requester authority alone does not confer sign-off. |
+| Executing personnel | Exact current task, active profile/personnel/membership and assigned reservation; acceptance, approved progress, declared attendance, checklist submission and private evidence preparation. No self-supervision, QA or closure. |
+| Contracting-provider administrator | Addressed active-party work projection; exact execution remains tied to assigned humans. Unrelated businesses and confidential commercial/case data remain hidden. |
+| Scoped operations staff | Active OnIt employment plus the relevant `fulfilment.*` permission; expected revisions and command-specific lifecycle rules still apply. |
+| Supervisor | Scoped supervision; actual supervisor identity and independence required to verify completion. Reviews cannot rewrite submitted/final content. |
+| QA inspector/checker | Assigned independent inspector; a different scoped checker approves. Current/historical executing-party affiliation, completer, supervisor and inspection maker checks prevent self-approval. |
+| Sensitive-case investigator | Separate sensitive-case authority plus scope and independence. Reporter projections contain customer-visible communication only. |
+| Exception/closure authority | Independent current-plan decisions, explicit policy and all closure gates; no provider declaration or customer silence releases capacity. |
+| Configuration makers/checkers | Global active OnIt configuration authority, independent publication, immutable versions and inspectable draft definitions. No automatic real-role grants. |
+| System worker | `process_execution_slas` requires service-role execution and trusted worker JWT context. Ordinary clients cannot execute it or the existing outbox/dispatch-expiry worker. No worker is deployed. |
+
+Public RPC wrappers use invoker rights; internal definers use pinned empty search paths and current database authority. Existing order/dispatch wrappers are rebound to execution-aware guards; direct execution of renamed bypass helpers is revoked. Storage paths remain private, account-consistent, scan-gated and linked to current work authority or reviewed customer visibility. Native SQL/concurrency tests passed; authenticated Supabase HTTP/Storage integration remains outstanding.
+
 # Phase 1 RLS, grants and privileged-function review
 
 All 79 application tables have RLS. Exact per-table policy expressions, constraints, indexes and grants are generated from PostgreSQL catalogs in [data-dictionary.md](data-dictionary.md). This guide explains intent; it does not claim that embedded tests replace real Supabase validation.
