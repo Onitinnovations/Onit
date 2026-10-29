@@ -1,4 +1,4 @@
-> Increments 5–6 current security evidence: [consolidated report](phase-2-increments-5-6-report.md). All 180 candidate tables have RLS; 38 specialised private tables use deny-by-default ordinary grants, independent approvals and scoped projections. Supplier portal access is organisation-bound, field reports are branch-filtered, and Storage access is limited to exact current linked references. Signed-in HTTP integration remains outstanding. Earlier sections describe their original checkpoints.
+> Increments 5–6 current security evidence: [consolidated report](phase-2-increments-5-6-report.md). All 180 deployed tables have RLS; 38 specialised private tables use deny-by-default ordinary grants, independent approvals and scoped projections. Supplier portal access is organisation-bound, field reports are branch-filtered, and Storage access is limited to exact current linked references. Signed-in HTTP integration remains outstanding. Earlier sections describe their original checkpoints.
 
 # Increment 5 local security extension
 

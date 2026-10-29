@@ -1,0 +1,45 @@
+{
+  "projectRef": "utoxjlsvqfmmzsjruzsm",
+  "reviewedAt": "2026-10-29T19:56:31.092Z",
+  "officialCliExitCode": 0,
+  "reviewedExactPending": true,
+  "plan": {
+    "upToDate": false,
+    "dryRun": true,
+    "migrations": [
+      "20261028000100_fulfilment_foundation.sql",
+      "20261028000200_execution_configuration_access.sql",
+      "20261028000300_execution_commands.sql",
+      "20261028000400_quality_closure_cases.sql",
+      "20261028000500_cases_sla_integrations.sql",
+      "20261028000600_execution_reads_storage_integrity.sql",
+      "20261029000100_specialized_operations_foundation.sql",
+      "20261029000200_specialized_authority.sql",
+      "20261029000300_laundry_commands.sql",
+      "20261029000400_operation_commands_reads.sql",
+      "20261029000500_specialized_integrity.sql",
+      "20261029000600_construction_commands.sql",
+      "20261029000700_procurement_sourcing.sql",
+      "20261029000800_procurement_receiving.sql",
+      "20261029000900_procurement_reads_integrity.sql",
+      "20261029001000_field_campaigns.sql",
+      "20261029001100_specialized_projections_security.sql",
+      "20261029001200_construction_commercial_replanning.sql",
+      "20261029001300_specialized_tenant_integrity.sql",
+      "20261029001400_mandatory_specialized_execution.sql",
+      "20261029001500_supplier_document_preparation.sql",
+      "20261029001600_supplier_independence_excess_goods.sql"
+    ],
+    "seeds": [],
+    "roles": []
+  },
+  "implementationCommit": "fd3c4bd840092d8dba689db848b40f66dc6d47cd",
+  "finalVerifiedAt": "2026-10-29T20:04:31.046Z",
+  "finalPlan": {
+    "upToDate": true,
+    "dryRun": true,
+    "migrations": [],
+    "seeds": [],
+    "roles": []
+  }
+}

@@ -32,8 +32,15 @@ try{
  'auth_users',(select count(*) from auth.users),
  'history',(select jsonb_agg(version order by version) from supabase_migrations.schema_migrations),
  'buckets',(select jsonb_agg(jsonb_build_object('id',id,'public',public,'limit',file_size_limit,'mime_types',allowed_mime_types) order by id) from storage.buckets)) as catalog`)[0].catalog;
+ const storageEnv={...process.env,PGHOST:'127.0.0.1',PGPORT:'55439',PGUSER:'postgres',PGDATABASE:tests.database,PGSSLMODE:'disable'};delete storageEnv.PGPASSWORD;
+ const storageReplay=spawnSync('.local-tools/postgres17/pgsql/bin/psql.exe',['-X','-q','-t','-A','-v','ON_ERROR_STOP=1'],{encoding:'utf8',windowsHide:true,env:storageEnv,timeout:30000,input:"select jsonb_agg(jsonb_build_object('id',id,'public',public,'limit',file_size_limit,'mime_types',allowed_mime_types) order by id) from storage.buckets;"});
+ if(storageReplay.error||storageReplay.status!==0)throw Error('Tested bucket configuration unavailable');
+ const canonicalBuckets=rows=>rows.map(bucket=>({...bucket,mime_types:bucket.mime_types===null?null:[...bucket.mime_types].sort()}));
+ const privacy=rows=>rows.map(({id,public:isPublic,limit})=>({id,public:isPublic,limit}));
+ report.storageMatchesCandidate=isDeepStrictEqual(canonicalBuckets(report.catalog.buckets),canonicalBuckets(JSON.parse(storageReplay.stdout)));
+ report.storagePrivacyAndLimitsPreserved=isDeepStrictEqual(privacy(report.catalog.buckets),privacy(before.inventory.storage_buckets));
  const c=report.catalog,versions=readdirSync('supabase/migrations').filter(f=>f.endsWith('.sql')).sort().map(f=>f.slice(0,14));
- if(c.tables!==180||c.missing_rls||c.public_definers||c.unsafe_paths||c.public_internal_execute||c.anon_private||c.user_private||c.client_writes||c.worker_client_execute||c.client_private_grants||c.expiry_client_execute||c.anonymous_order_execute||c.sla_client_execute||c.anonymous_specialized_execute||c.new_operational_role_grants||c.version!=='17.11'||!isDeepStrictEqual(c.history,versions)||!isDeepStrictEqual(c.buckets,before.inventory.storage_buckets))throw Error('Hosted catalog/security/history/storage verification failed');
+ if(c.tables!==180||c.missing_rls||c.public_definers||c.unsafe_paths||c.public_internal_execute||c.anon_private||c.user_private||c.client_writes||c.worker_client_execute||c.client_private_grants||c.expiry_client_execute||c.anonymous_order_execute||c.sla_client_execute||c.anonymous_specialized_execute||c.new_operational_role_grants||c.version!=='17.11'||!isDeepStrictEqual(c.history,versions)||!report.storageMatchesCandidate||!report.storagePrivacyAndLimitsPreserved)throw Error('Hosted catalog/security/history/storage verification failed');
  const signature=readFileSync('supabase/inspection/application_signature.sql','utf8');
  const localEnv={...process.env,PGHOST:'127.0.0.1',PGPORT:'55439',PGUSER:'postgres',PGDATABASE:tests.database,PGSSLMODE:'disable'};delete localEnv.PGPASSWORD;
  const replay=spawnSync('.local-tools/postgres17/pgsql/bin/psql.exe',['-X','-q','-t','-A','-v','ON_ERROR_STOP=1'],{encoding:'utf8',windowsHide:true,env:localEnv,input:signature,maxBuffer:32*1024*1024});

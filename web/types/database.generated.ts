@@ -655,7 +655,11 @@ export type Database = {
           created_by: string | null
           customer_account_id: string
           id: string
+          order_id: string | null
+          previous_id: string | null
           rating: number
+          revision: number | null
+          work_order_id: string | null
         }
         Insert: {
           comment?: string | null
@@ -663,7 +667,11 @@ export type Database = {
           created_by?: string | null
           customer_account_id: string
           id?: string
+          order_id?: string | null
+          previous_id?: string | null
           rating: number
+          revision?: number | null
+          work_order_id?: string | null
         }
         Update: {
           comment?: string | null
@@ -671,7 +679,11 @@ export type Database = {
           created_by?: string | null
           customer_account_id?: string
           id?: string
+          order_id?: string | null
+          previous_id?: string | null
           rating?: number
+          revision?: number | null
+          work_order_id?: string | null
         }
         Relationships: [
           {
@@ -686,6 +698,13 @@ export type Database = {
             columns: ["customer_account_id"]
             isOneToOne: false
             referencedRelation: "customer_profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "customer_feedback_previous_id_fkey"
+            columns: ["previous_id"]
+            isOneToOne: false
+            referencedRelation: "customer_feedback"
             referencedColumns: ["id"]
           },
         ]
@@ -1756,8 +1775,12 @@ export type Database = {
       service_checklist_items: {
         Row: {
           checklist_id: string
+          choices: Json
+          condition: Json | null
           created_at: string
           created_by: string | null
+          evidence_required: boolean
+          field_type: string
           id: string
           item_key: string
           label: string
@@ -1765,11 +1788,16 @@ export type Database = {
           required: boolean
           service_version_id: string
           updated_at: string
+          validation: Json
         }
         Insert: {
           checklist_id: string
+          choices?: Json
+          condition?: Json | null
           created_at?: string
           created_by?: string | null
+          evidence_required?: boolean
+          field_type?: string
           id?: string
           item_key: string
           label: string
@@ -1777,11 +1805,16 @@ export type Database = {
           required?: boolean
           service_version_id: string
           updated_at?: string
+          validation?: Json
         }
         Update: {
           checklist_id?: string
+          choices?: Json
+          condition?: Json | null
           created_at?: string
           created_by?: string | null
+          evidence_required?: boolean
+          field_type?: string
           id?: string
           item_key?: string
           label?: string
@@ -1789,6 +1822,7 @@ export type Database = {
           required?: boolean
           service_version_id?: string
           updated_at?: string
+          validation?: Json
         }
         Relationships: [
           {
@@ -1815,8 +1849,12 @@ export type Database = {
           created_by: string | null
           id: string
           name: string
+          publication_status: string
+          published_at: string | null
+          published_by: string | null
           service_version_id: string
           updated_at: string
+          version: number
         }
         Insert: {
           checklist_type: string
@@ -1825,8 +1863,12 @@ export type Database = {
           created_by?: string | null
           id?: string
           name: string
+          publication_status?: string
+          published_at?: string | null
+          published_by?: string | null
           service_version_id: string
           updated_at?: string
+          version?: number
         }
         Update: {
           checklist_type?: string
@@ -1835,13 +1877,24 @@ export type Database = {
           created_by?: string | null
           id?: string
           name?: string
+          publication_status?: string
+          published_at?: string | null
+          published_by?: string | null
           service_version_id?: string
           updated_at?: string
+          version?: number
         }
         Relationships: [
           {
             foreignKeyName: "service_checklists_created_by_fkey"
             columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "service_checklists_published_by_fkey"
+            columns: ["published_by"]
             isOneToOne: false
             referencedRelation: "profiles"
             referencedColumns: ["id"]
@@ -2856,6 +2909,10 @@ export type Database = {
         }
         Returns: string
       }
+      create_work_order: {
+        Args: { p_data: Json; p_key: string; p_order: string }
+        Returns: string
+      }
       decide_quotation: {
         Args: { p_action: string; p_id: string }
         Returns: string
@@ -2876,7 +2933,35 @@ export type Database = {
         Returns: string
       }
       ensure_individual_customer: { Args: never; Returns: string }
+      execution_case_command: {
+        Args: { p_action: string; p_data: Json; p_key: string; p_order: string }
+        Returns: string
+      }
+      execution_dashboard: {
+        Args: {
+          p_after?: string
+          p_city?: string
+          p_from?: string
+          p_limit?: number
+          p_until?: string
+          p_view: string
+          p_zone?: string
+        }
+        Returns: Json
+      }
+      execution_document_reference: {
+        Args: { p_evidence: string }
+        Returns: Json
+      }
       expire_dispatch_offers: { Args: { p_limit: number }; Returns: number }
+      fulfilment_command: {
+        Args: { p_action: string; p_data: Json; p_key: string; p_work: string }
+        Returns: string
+      }
+      fulfilment_configuration: {
+        Args: { p_action: string; p_data: Json; p_key: string }
+        Returns: string
+      }
       generate_quotation: {
         Args: { p_input: Json; p_key: string; p_request: string }
         Returns: string
@@ -2889,9 +2974,24 @@ export type Database = {
         Args: { p_after?: string; p_limit?: number; p_status?: string }
         Returns: Json
       }
+      list_service_operations: {
+        Args: {
+          p_after?: string
+          p_city?: string
+          p_kind?: string
+          p_limit?: number
+          p_queue: string
+          p_zone?: string
+        }
+        Returns: Json
+      }
       match_order: {
         Args: { p_candidates: Json; p_order: string }
         Returns: Json
+      }
+      operation_policy_command: {
+        Args: { p_action: string; p_data: Json; p_key: string }
+        Returns: string
       }
       operational_event_worker: {
         Args: { p_action: string; p_data: Json }
@@ -2928,6 +3028,7 @@ export type Database = {
         }
         Returns: string
       }
+      process_execution_slas: { Args: { p_limit: number }; Returns: number }
       provider_activity: {
         Args: {
           p_before?: string
@@ -2975,7 +3076,13 @@ export type Database = {
         }
         Returns: string
       }
+      quality_command: {
+        Args: { p_action: string; p_data: Json; p_key: string; p_work: string }
+        Returns: string
+      }
       read_assessment: { Args: { p_id: string }; Returns: Json }
+      read_fulfilment_configuration: { Args: { p_id: string }; Returns: Json }
+      read_operation_policy: { Args: { p_policy: string }; Returns: Json }
       read_order: { Args: { p_order: string }; Returns: Json }
       read_order_policy: { Args: { p_id: string }; Returns: Json }
       read_personnel_resource: { Args: { p_profile: string }; Returns: Json }
@@ -2987,6 +3094,12 @@ export type Database = {
       }
       read_quotation: { Args: { p_id: string }; Returns: Json }
       read_quotation_commercial: { Args: { p_id: string }; Returns: Json }
+      read_service_case: { Args: { p_case: string }; Returns: Json }
+      read_service_operation: {
+        Args: { p_after?: string; p_limit?: number; p_operation: string }
+        Returns: Json
+      }
+      read_work_order: { Args: { p_work: string }; Returns: Json }
       retire_pricing_card: {
         Args: { p_id: string; p_key: string; p_reason: string }
         Returns: string
@@ -2994,6 +3107,19 @@ export type Database = {
       review_service_request: {
         Args: { p_id: string; p_revision: number }
         Returns: number
+      }
+      service_operation_command: {
+        Args: {
+          p_action: string
+          p_data: Json
+          p_key: string
+          p_operation: string
+        }
+        Returns: string
+      }
+      specialized_document_reference: {
+        Args: { p_document: string; p_operation: string }
+        Returns: Json
       }
     }
     Enums: {

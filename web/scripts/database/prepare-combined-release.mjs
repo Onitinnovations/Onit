@@ -44,7 +44,7 @@ try{
  if(report.security.anon_private||report.security.user_private||report.security.missing_rls)throw Error('Baseline security gate failed');
  const remoteSignature=remote(signature)[0].signature;
  mkdirSync(out,{recursive:true});
- const aclScript=`$target='${out.replaceAll("'", "''")}';$acl=Get-Acl -LiteralPath $target;$sid=[System.Security.Principal.WindowsIdentity]::GetCurrent().User.Value;$bad=@($acl.Access|Where-Object{$_.IdentityReference.Translate([System.Security.Principal.SecurityIdentifier]).Value -notin @($sid,'S-1-5-18')});if(-not $acl.AreAccessRulesProtected -or $bad.Count -gt 0){throw 'Backup directory requires protected current-user and SYSTEM-only access'};'ACL_VERIFIED'`;
+ const aclScript=`$target='${out.replaceAll("'", "''")}';$acl=[System.IO.Directory]::GetAccessControl($target);$sid=[System.Security.Principal.WindowsIdentity]::GetCurrent().User.Value;$bad=@($acl.Access|Where-Object{$_.IdentityReference.Translate([System.Security.Principal.SecurityIdentifier]).Value -notin @($sid,'S-1-5-18')});if(-not $acl.AreAccessRulesProtected -or $bad.Count -gt 0){throw 'Backup directory requires protected current-user and SYSTEM-only access'};'ACL_VERIFIED'`;
  if(!run('powershell.exe',['-NoProfile','-NonInteractive','-EncodedCommand',Buffer.from(aclScript,'utf16le').toString('base64')]).includes('ACL_VERIFIED'))throw Error('Backup ACL verification failed');
  report.backupDirectoryAcl='Verified protected current-user/SYSTEM-only access';
  const script=official(['db','dump','--linked','--project-ref',ref,'--dry-run']);

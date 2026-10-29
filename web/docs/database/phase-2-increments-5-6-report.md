@@ -1,6 +1,6 @@
 # Increments 5–6 — fulfilment and specialised operations
 
-Report date: **2026-10-29, Africa/Lagos**. **Complete local candidate validated; combined GitHub/hosted release gates remain pending.** This replaces the earlier incomplete draft checkpoint. No frontend, AWS, payment gateway, wallet, payout, settlement, live sender, worker or scheduler was implemented/deployed.
+Report date: **2026-10-29, Africa/Lagos**. **Combined release deployed and verified.** This replaces the earlier incomplete draft checkpoint. No frontend, AWS, payment gateway, wallet, payout, settlement, live sender, worker or scheduler was implemented/deployed.
 
 ## Baseline and Increment 5 preservation
 
@@ -116,26 +116,29 @@ Primary evidence: [integrated tests](phase-2-specialized-test-results.json), [pr
 
 Scenarios A–C exercise actual laundry pickup/two partners/partial and rejected custody/damage/loss/QA failure/rework/delivery/closure. D–F exercise trade milestones/materials, rejected variations and accepted priced commercial replanning. G–I exercise competing supplier confidentiality, amendments, partial/missing/damaged/excess receipts, returns and replacements. J–L exercise multiple field agents, rejected corrections, optional cancellation and client/branch reporting. M–O add real concurrent acknowledgements/receipts/milestones/submissions, shared closure/capacity/outbox/performance and every historical regression.
 
+Recovery/postverification tooling initially stopped on a legacy PowerShell ACL-module load and an obsolete unchanged-MIME comparison. Native ACL verification and exact tested MIME-set comparison resolved those checks without hosted corrective SQL or weakening privacy/size checks.
+
 Development failures are not passing evidence: SQL name/alias errors, too-short synthetic execution windows, fixture capacity overlap and nondeterministic redundant FK indexes were corrected. The priced variation now explicitly reschedules before re-release. Independent race fixtures use isolated clones. The final manifest/report comes from the successful complete candidate, not earlier DDL-only/focused attempts. Normal SQL suites roll back; retained synthetic race fixtures exist only in labelled loopback databases.
 
 TypeScript, ESLint, dependency audit, migration integrity, text/credential scans and git diff checks are release gates recorded in the release checkpoint. Query plans are actual local EXPLAIN ANALYZE/BUFFERS on small fixtures, not production-volume certification.
 
 ## GitHub, recovery and hosted release
 
-Implementation/checkpoint commit: **Not committed at report generation.**. No hosted release success is claimed until the recovery, exact CLI dry run and postdeployment gates pass.
+Implementation/checkpoint commit: **fd3c4bd840092d8dba689db848b40f66dc6d47cd**. Pushed to existing main without force; postdeployment canonical types and this report are committed separately. The final response records that checkpoint hash.
 
-Final fresh backup, restore/combined upgrade and official dry-run gates are pending. The earlier recovery preflight covers Increment 5 only and is not substituted for this gate.
+Fresh external archive: C:\Users\HP\OnIt Database Backups\combined5-6-final-20261029\pre-increments5-6-final-1793303543139.dump. Size: **1487190 bytes**; SHA-256: **d95ff72576f38a8c36fb697c21be018eca7d70d1ab9b8e6e90c628fd3907c71e**. Restore verified: **true**; complete restored upgrade definitions match: **true**. Folder protection: Verified protected current-user/SYSTEM-only access. Hosted/restored baseline schema and all 126 baseline row counts/digests were compared. [Recovery evidence](phase-2-increments-5-6-predeployment.json).
 
 Logical recovery scope is public/private/app_private/auth/storage/extensions/supabase_migrations schemas/rows. It excludes Storage object binaries, cluster roles/globals, Vault secrets, external integrations, platform settings and managed PITR. Access controls do not imply encryption. Restore first into an isolated compatible environment with reviewed managed roles/TOC and pg_restore --exit-on-error --no-owner, then compare definitions and original-column row digests. Never reset or overwrite hosted data as rollback; prefer reviewed additive forward fixes with affected callers paused.
 
-Hosted remains at the verified 26-migration baseline until the separately recorded combined application succeeds. Canonical hosted types are preserved until actual deployment.
+Hosted verification: **48 migrations / 180 RLS tables**, exact tested application definitions and preserved original rows. Protected function grants, approved Storage MIME configuration with baseline privacy/size limits preserved, and zero unintended operational role assignments passed. Anonymous API/Auth/Storage denial checks passed and canonical public-schema types were generated with the official CLI. The [official dry-run evidence](phase-2-increments-5-6-dry-run.json) records exactly 22 pending files before deployment and upToDate=true with empty migration/seed/role lists afterwards. [Hosted evidence](phase-2-increments-5-6-hosted-verification.json).
 
 ## Limits and operational prerequisites
 
 - Authenticated Supabase JWT/REST/Storage workflows and server-adapter HTTP integration remain unexecuted without approved existing test identities; none were created hosted. SQL role tests do not replace those tests or a full managed-runtime/production-load certification.
 - Real identities, employment/membership, least-privilege grants and independently approved category/workflow/form/SLA/provider/supplier/commercial configuration are required. No operational price, tax, provider, customer, supplier, campaign, order or credit record is seeded or activated.
+- Supplier contractual uploads use the existing PDF-only contracts bucket, and the adapter restricts inputs to PDF. Broader registry metadata MIME values do not override bucket validation; images/videos use the appropriate shared evidence workflow.
 - Scanning, external verification/location services, senders, schedules and live workers are not deployed. Upload preparation is working metadata/Storage authorisation; trusted scanning and actual HTTP/object-binary integration remain operational integrations.
 - Physical work and corrective execution must fit validated assigned windows. New-window work requires authorised retirement/replanning/redispatch; capacity is never invented or silently extended. Cross-work personnel substitution fails safely until affected plans are retired. New commercial/specification scope outside approved demand requires the accepted-order change/new-order process, not editing a PO/task price in place.
 - Detail projections are intended for operational units; large historical exports and production-scale benchmarks require separate bounded reporting. Currency conversion, supplier payments, financial stock ownership/refunds and third-party authenticity guarantees are not implemented.
 
-**Ready for the remaining controlled release gates after successful local validation.** Frontend development has not started.
+**Ready for frontend and OMS application development on this deployed backend**, subject to the outstanding authenticated integration tests and deliberate operational configuration before live use.

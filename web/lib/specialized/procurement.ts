@@ -9,7 +9,7 @@ type OperationDatabase = Omit<Database, 'public'> & { public: Omit<Database['pub
   read_service_operation: { Args: { p_operation: string; p_after?: string; p_limit?: number }; Returns: Json };
 } } };
 export type ProcurementMutation =
- | { action: 'supplier.document_prepare'; data: { supplier_id: string; kind: 'verification'; content_type: 'application/pdf' | 'image/jpeg' | 'image/png' | 'image/webp' | 'text/plain'; byte_size: number } | { supplier_id: string; kind: 'shipping'; po_id: string; content_type: 'application/pdf' | 'image/jpeg' | 'image/png' | 'image/webp' | 'text/plain'; byte_size: number } | { supplier_id: string; kind: 'response'; recipient_id: string; content_type: 'application/pdf' | 'image/jpeg' | 'image/png' | 'image/webp' | 'text/plain'; byte_size: number } }
+ | { action: 'supplier.document_prepare'; data: { supplier_id: string; kind: 'verification'; content_type: 'application/pdf'; byte_size: number } | { supplier_id: string; kind: 'shipping'; po_id: string; content_type: 'application/pdf'; byte_size: number } | { supplier_id: string; kind: 'response'; recipient_id: string; content_type: 'application/pdf'; byte_size: number } }
  | { action: 'link_task'; data: { task_id: string; purpose: 'procurement_receiving' | 'procurement_handover' } }
  | { action: 'activate' | 'ready' | 'close' | 'cancel'; data?: never }
  | { action: 'supplier.prepare'; data: { supplier_id: string; document_id: string; valid_from: string; valid_until: string } }

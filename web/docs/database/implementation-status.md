@@ -1,4 +1,4 @@
-> Combined Increments 5–6 candidate (2026-10-29): 48 migrations / 180 RLS tables (51 public, 129 private), with 577 SQL assertions, 53 concurrency checks and 17 upgrade checks passed. Hosted release gates are pending. See [consolidated report](phase-2-increments-5-6-report.md). Earlier dated entries below are historical.
+> Verified combined Increments 5–6 deployment (2026-10-29): OnIt utoxjlsvqfmmzsjruzsm, PostgreSQL 17.11, 48 recorded migrations / 180 RLS tables (51 public, 129 private). Original rows and tested definitions verified; canonical types regenerated. [Consolidated report](phase-2-increments-5-6-report.md). Authenticated workflow HTTP tests and real operational configuration remain outstanding. Earlier dated entries are historical.
 
 > Increment 5 local candidate (2026-10-27): six additive migrations, 16 private tables; 32 migrations / 142 RLS tables (51 public, 91 private). Hosted remains at Increment 4: 26 / 126. See [fulfilment report](phase-2-increment-5-report.md), [dictionary](phase-2-increment-5-dictionary.md) and [ERD](phase-2-increment-5-erd.md). No commit/push/deployment or Increment 6 work. Earlier status entries below are historical.
 
